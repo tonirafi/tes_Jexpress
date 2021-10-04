@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|start">
+
+
+    <com.template.project.widget.AdjustableImageView
+        android:id="@+id/viewMore"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:padding="@dimen/comm_gap_10"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_arrow_more2" />
+
+</LinearLayout>
