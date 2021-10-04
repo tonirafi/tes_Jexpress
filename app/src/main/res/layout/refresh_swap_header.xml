@@ -27,7 +27,7 @@
         android:layout_marginBottom="10dp"
         android:adjustViewBounds="true"
         android:contentDescription="@null"
-        android:src="@drawable/logo_gudangview" />
+        android:src="@drawable/ic_android_black_24dp" />
 
     <TextView
         android:id="@+id/tv_status"

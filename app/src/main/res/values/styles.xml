@@ -5,7 +5,6 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/red</item>
         <item name="colorPrimaryDark">@color/redDark</item>
-        //6.0以下的系统 状态栏统一使用默认 6.0以上系统使用沉浸式 因为6.0以上可设置状态栏字体颜色 从而避免api大于等于19但api小于23的系统中出现状态栏文字显示不明显的问题
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="windowNoTitle">true</item>
@@ -15,10 +14,8 @@
         <item name="android:textColorSecondary">@color/color_txt_hint</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
 
-        <!--设置默认button样式-->
         <item name="buttonStyle">@style/defaultButtonStyle</item>
 
-        <!--设置默认文本编辑框样式-->
         <item name="editTextBackground">@drawable/shape_rect_c4_white</item>
         <item name="editTextColor">@color/color_txt_default</item>
         <item name="editTextStyle">@style/defaultEditTextStyle</item>
@@ -30,12 +27,11 @@
 
         <item name="android:colorBackground">@color/white</item>
 
-        <item name="android:windowBackground">@drawable/pre_splash_bg</item>
+        <item name="android:windowBackground">@drawable/ic_android_black_24dp</item>
         <item name="android:radioButtonStyle">@style/defaultRadioButtonStyle</item>
         <item name="homeAsUpIndicator">@drawable/ic_nav_back</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_nav_back</item>
 
-        <!-- listView 单选按钮以及背景 -->
         <item name="android:listChoiceBackgroundIndicator">@drawable/sel_item_default</item>
         <item name="android:listChoiceIndicatorSingle">@drawable/sel_checkbox_green_filled</item>
 
@@ -47,21 +43,15 @@
         <item name="android:textColorSecondary">@color/text_666</item>
         <item name="dialogCornerRadius">@dimen/radius_small</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
-        <!--一下背景色设置会让 dialogCornerRadius取值失效 -->
         <!--<item name="android:background">@color/white</item>-->
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
     </style>
 
-    <!--============ 分割线： 以上为主题 以下为样式 ==========================-->
 
     <style name="activityAnimStyle" parent="@android:style/Animation.Activity">
-        <!--新Activity 进入 -->
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_from_right</item>
-        <!--旧Activity退出 -->
         <item name="android:activityOpenExitAnimation">@anim/slide_out_to_left</item>
-        <!--新Activity退出 -->
         <item name="android:activityCloseExitAnimation">@anim/slide_out_to_right</item>
-        <!--旧Activity进入 -->
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_from_left</item>
 
     </style>

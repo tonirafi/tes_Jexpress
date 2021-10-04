@@ -21,9 +21,8 @@
         </intent>
     </queries>
     <application
-        android:icon="@mipmap/icon_front_gudangview"
+        android:icon="@drawable/__picker_camera"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/icon_front_gudangview"
         android:supportsRtl="true"
         android:allowBackup="true"
         android:theme="@style/BaseAppTheme"
@@ -33,65 +32,11 @@
         tools:replace="android:allowBackup,android:fullBackupContent"
         android:requestLegacyExternalStorage="true"
         >
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5178386423656556~6322299683"/>
-        <activity
-            android:name="com.template.project.MainActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
-            <!-- qsc://app.pedulisehat/go/main -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
 
-                <data
-                    android:host="app.gudangview"
-                    android:pathPrefix="/go/main"
-                    android:scheme="gv" />
-            </intent-filter>
 
-        </activity>
-
-        <activity
-            android:name="com.template.project.ui.iklanDetail.IklanDetailActivity"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data
-                    android:host="app.gudangview"
-                    android:pathPrefix="/go/detail"
-                    android:scheme="gv" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.template.project.ui.iklan.CreateIklanActivity" />
-        <activity android:name="com.template.project.ui.h5.H5Activity" />
-        <activity android:name="com.template.project.ui.topup.TopUpActivity" />
-        <activity android:name="com.template.project.ui.penarikan.PenarikanActivity" />
-        <activity android:name="com.template.project.ui.profile.UpdateUserActivity" />
-        <activity android:name="com.template.project.ui.profile.UpdatePasswordActivity" />
-        <activity android:name="com.template.project.ui.profile.BankWalletActivity" />
-        <activity android:name="com.template.project.ui.aut.LoginActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTop"
-            />
-        <activity android:name="com.template.project.ui.profile.ListBankWalletActivity" />
-        <activity android:name="com.template.project.ui.h5.WebViewActivity" />
-        <activity android:name="com.template.project.ui.aut.RegisterActivity" />
-        <activity android:name="com.template.project.ui.aut.ForgoteActivity" />
-        <activity android:name="com.template.project.ui.iklanDetail.WebViewDurationActivity" />
 
 
     </application>
