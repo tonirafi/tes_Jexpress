@@ -3,6 +3,7 @@ package com.template.project.utils
 import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.net.wifi.WifiManager
 import android.text.Spannable
@@ -146,6 +147,12 @@ class AppUtilNew {
                 editText.setSelection(editText.length())
             }
 
+        }
+
+        fun isNetworkAvailable(context: Context): Boolean {
+            val connectivityManager: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetworkInfo = connectivityManager.getActiveNetworkInfo()
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected
         }
 
     }
