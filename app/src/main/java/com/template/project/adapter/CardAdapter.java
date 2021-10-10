@@ -19,18 +19,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by kuangwen on 16/7/19.
- */
 public class CardAdapter extends RecyclerView.Adapter {
     protected List<BaseCard> mList;
     protected Context mContext;
     protected SparseArray<ItemViewProvider> mProviders;
     protected static final List<String> mCardPool = new ArrayList<>();
     protected static final List<String> mProviderPool = new ArrayList<>();
-    //存储全局性的BaseCard对应的viewType
     protected static final Map<String, Integer> mViewTypeVal = new HashMap<>();
-    //存储viewType对应的Provider索引
     protected final SparseIntArray mViewTypePos = new SparseIntArray();
 
     public CardAdapter(Context context) {

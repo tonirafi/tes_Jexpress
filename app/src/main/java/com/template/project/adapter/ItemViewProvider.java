@@ -7,11 +7,6 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
-/**
- * Created by 5Mall<zhangwei> on 2018/7/28
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public abstract class ItemViewProvider<C extends BaseCard, V extends CommonVh<C>> {
     protected CardAdapter.OnItemClickListener mOnItemClickListener;
 

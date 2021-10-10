@@ -18,11 +18,6 @@ import com.template.project.utils.DensityUtil;
 import com.template.project.widget.MyViewPager;
 
 
-/**
- * Created by 5Mall<zhangwei> on 2018/7/28
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 @CardMap(VPListCard.class)
 public class VPListCardProvider extends ItemViewProvider<VPListCard, VPListCardProvider.ViewHolder> {
 

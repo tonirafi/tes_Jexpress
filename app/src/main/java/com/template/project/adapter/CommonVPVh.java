@@ -2,13 +2,6 @@ package com.template.project.adapter;
 
 import android.view.View;
 
-
-/**
- * Created by 5Mall<zhangwei> on 2019/10/30
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
-
 public class CommonVPVh<T extends BaseCard> extends CommonVh<T> {
 
     protected int position = -1;

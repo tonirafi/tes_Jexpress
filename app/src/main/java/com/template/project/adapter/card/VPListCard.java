@@ -7,11 +7,6 @@ import com.template.project.adapter.BaseCard;
 import java.util.List;
 
 
-/**
- * Created by 5Mall<zhangwei> on 2019-07-12
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public class VPListCard extends BaseCard {
 
     public List<BaseCard> cards;

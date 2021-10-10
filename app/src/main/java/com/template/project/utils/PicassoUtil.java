@@ -20,7 +20,7 @@ public class PicassoUtil {
     public static RequestCreator loadRaw(String path) {
 
         if (TextUtils.isEmpty(path)) {
-            return Picasso.get().load(R.drawable.img_placeholder_empty);
+            return Picasso.get().load(R.drawable.empty_logo);
         }
 
         Uri uri = Uri.parse(path);

@@ -18,11 +18,6 @@ import com.template.project.adapter.card.TabCard;
 import butterknife.BindView;
 
 
-/**
- * Created by 5Mall<zhangwei> on 2019-07-10
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 @CardMap(TabCard.class)
 public class TabCardProvider extends ItemViewProvider<TabCard, TabCardProvider.ViewHolder> {
 

@@ -19,11 +19,7 @@ import me.samlss.broccoli.Broccoli;
 import me.samlss.broccoli.BroccoliGradientDrawable;
 import me.samlss.broccoli.PlaceholderParameter;
 
-/**
- * Created by 5Mall<zhangwei> on 2018/7/30
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
+
 
 public class CommonVh<T extends BaseCard> extends RecyclerView.ViewHolder {
 

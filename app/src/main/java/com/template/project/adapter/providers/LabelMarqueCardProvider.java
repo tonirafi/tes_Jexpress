@@ -21,11 +21,6 @@ import com.template.project.utils.AppUtil;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by 5Mall<zhangwei> on 2019/1/8
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 @CardMap(LabelCardMarque.class)
 public class LabelMarqueCardProvider extends ItemViewProvider<LabelCardMarque, LabelMarqueCardProvider.ViewHolder> {
 

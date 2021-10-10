@@ -11,11 +11,6 @@ import com.template.project.service.upload.image.bean.ImageBean;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by 5Mall<zhangwei> on 2018/12/26
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public class UploadImageGroupCard extends EditCard {
     public List<UploadImageUnitCard> cards;
     public int maxNum = 8;

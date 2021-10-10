@@ -10,11 +10,6 @@ import com.template.project.R;
 import com.template.project.adapter.BaseCard;
 
 
-/**
- * Created by 5Mall<zhangwei> on 2019/1/8
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public class LabelCard extends EditCard {
 
     public LabelCard(CharSequence text) {

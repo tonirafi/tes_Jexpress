@@ -26,9 +26,6 @@ public class PhotoCardAdapter extends CardAdapter {
         }
     }
 
-    /**
-     * 默认最多可上传8张图片
-     */
     private int maxNum = 8;
     public boolean showCoverTag = true;
 

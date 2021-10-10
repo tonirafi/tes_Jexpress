@@ -18,7 +18,7 @@
         android:layout_marginEnd="@dimen/comm_gap_5"
         android:layout_marginRight="@dimen/comm_gap_5"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_avatar_default"
+        android:src="@drawable/empty_logo"
         app:riv_corner_radius="@dimen/comm_gap_4"
         tools:background="@drawable/ic_add_photos" />
 

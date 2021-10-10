@@ -9,11 +9,6 @@ import androidx.annotation.FontRes;
 import com.template.project.R;
 
 
-/**
- * Created by 5Mall<zhangwei> on 2019/1/8
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public class LabelCardMarque extends EditCard {
 
     public LabelCardMarque(CharSequence text) {

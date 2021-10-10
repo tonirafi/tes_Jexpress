@@ -20,11 +20,6 @@ import java.util.List;
 
 import butterknife.BindView;
 
-/**
- * Created by 5Mall<zhangwei> on 2018/7/28
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 @CardMap(ReyclerviewGlobalCard.class)
 public class ReycleviewGlobalCardProvider extends ItemViewProvider<ReyclerviewGlobalCard, ReycleviewGlobalCardProvider.ViewHolder> {
 

@@ -9,15 +9,8 @@ import com.template.project.AppConstants;
 import com.template.project.http.bean.BaseBean;
 import com.template.project.utils.DensityUtil;
 
-
-/**
- * Created by 5Mall<zhangwei> on 2018/7/28
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public class BaseCard extends BaseBean implements Comparable<BaseCard>, Parcelable {
 
-    //默认水平/垂直 方向边距
     public static final int defaultPadding = DensityUtil.dp2px(16);
 
     public transient int sort;
