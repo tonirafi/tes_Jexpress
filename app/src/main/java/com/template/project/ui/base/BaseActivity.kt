@@ -41,7 +41,6 @@ abstract class BaseActivity: AppCompatActivity(), BaseView{
         }
         baseView = BaseViewImpl(window.decorView.findViewById(R.id.content), this)
         if (needRegisterReceiver()) {
-            //在APP内接收广播 提高广播的效率 安全性更高 0
             LocalBroadcastManager.getInstance(this).registerReceiver(receiver, receiver.filter)
         }
     }
@@ -52,7 +51,6 @@ abstract class BaseActivity: AppCompatActivity(), BaseView{
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        // 因为状态栏字体颜色  只能在安卓6.0以上设置  为了更好的沉浸式效果体验 目前app只在安卓6.0以上应用沉浸式效果
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             setStatusBar()
         }
@@ -179,7 +177,6 @@ abstract class BaseActivity: AppCompatActivity(), BaseView{
         onComplete()
     }
 
-    //默认交由BaseViewImpl处理
     override fun authError(): Boolean = false
 
     override fun parseIntent(intent: Intent?): Uri? = baseView.parseIntent(intent)

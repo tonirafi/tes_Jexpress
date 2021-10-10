@@ -70,7 +70,6 @@ abstract class PermissionActivity : BaseActivity(), PermissionListener, Rational
     }
 
     override fun showRequestPermissionRationale(requestCode: Int, rationale: Rationale?) {
-        LogUtil.logD("AndPermission", "请求权限:showRequestPermissionRationale ")
         if (requestCode == this.mRequestCode) {
             // Successfully.
 //            AndPermission.rationaleDialog(this, rationale)
@@ -100,7 +99,6 @@ abstract class PermissionActivity : BaseActivity(), PermissionListener, Rational
         if (AndPermission.hasPermission(this, permissions)) {
             permissionGranted(this.mRequestCode)
         } else {
-            LogUtil.logE("AndPermission", "请求权限:defaultSettingDialog ")
             // To judge whether to check the [Never ask again].
             if (AndPermission.hasAlwaysDeniedPermission(this, permissions)) {
                 // First type: with AndPermission default prompt.

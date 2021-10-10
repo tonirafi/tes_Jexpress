@@ -196,7 +196,6 @@ abstract class BaseFragment: Fragment(), BaseView {
 
 
 
-    //默认交由BaseViewImpl处理
     override fun authError(): Boolean = false
 
     override fun parseIntent(intent: Intent?): Uri? = baseView.parseIntent(intent)

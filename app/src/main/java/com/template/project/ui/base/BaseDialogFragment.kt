@@ -44,9 +44,6 @@ abstract class BaseDialogFragment: AppCompatDialogFragment(), BaseView {
         super.showNow(manager, this.javaClass.simpleName)
     }
 
-    /**
-     * 规避异常： Can not perform this action after onSaveInstanceState
-     */
     open fun show(manager: FragmentManager) {
 //        super.show(manager, this.javaClass.simpleName)
         val ft = manager.beginTransaction()
@@ -177,7 +174,6 @@ abstract class BaseDialogFragment: AppCompatDialogFragment(), BaseView {
 
     override fun authError(): Boolean {
         onComplete()
-        //默认交由BaseViewImpl处理
         return false
     }
 
