@@ -5,11 +5,6 @@ import android.content.UriMatcher
 import android.net.Uri
 import cn.campusapp.router.interceptor.Interceptor
 
-/**
- * Created by 5Mall<zhangwei> on 2018/7/18
- * Email:zhangwei@qingsongchou.com
- * 描述： 路由拦截器 可以对路由做拦截跳转等处理 该处拦截可拦截的路由地址 均为在路由表注册的地址
- */
 class RouteInterceptor : Interceptor {
 
     companion object {

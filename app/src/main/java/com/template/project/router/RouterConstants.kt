@@ -9,7 +9,7 @@ object RouterConstants {
 
     object Common {
         const val SCHEME = "gv"
-        const val HOST = "app.gudangview"
+        const val HOST = "app"
         private const val BASE_URI = "$SCHEME://$HOST"
         private const val PATH_GO = "/go"
         private const val PATH_DO = "/do"

@@ -21,9 +21,6 @@ import cn.campusapp.router.Router;
 import cn.campusapp.router.route.ActivityRoute;
 
 
-/**
- * Created by wsl on 16-1-18.
- */
 public class IntentUtil {
 
 
@@ -254,7 +251,6 @@ public class IntentUtil {
         }
 
 //        if (route != null) {
-        //带上参数
         if (bundle != null) {
             route.addExtras(bundle);
         }
@@ -266,11 +262,9 @@ public class IntentUtil {
                 route.withOpenMethodStartForResult(activity, requestCode);
             }
         }
-        //设置flage
         if (flag != -1) {
             route.withFlags(flag);
         }
-        //设置转场动画
         if (activity != null) {
 //            route.setAnimation(activity, R.anim.slide_in_from_right, R.anim.slide_out_to_left);
         }
