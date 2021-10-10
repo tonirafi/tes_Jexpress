@@ -75,12 +75,12 @@ class InjectHeaderInterceptor : Interceptor {
             if (regularHeaders) {
                 //        builder.header("Cache-Control","public,max-age=20")
                 builder.header(AppConstants.Http.HEADER_ACCEPT_KEY, AppConstants.Http.HEADER_ACCEPT_VALUE)
-                builder.header(AppConstants.Http.HEADER_ACCEPT_LANGUAGE, AppConstants.Http.getDeviceLan())
+                builder.header(AppConstants.Http.HEADER_ACCEPT_LANGUAGE, AppConstants.Http.deviceLan)
                 builder.header(AppConstants.Http.HEADER_PLATFORM, AppConstants.Http.HEADER_PLATFORM_VALUE)
-                builder.header(AppConstants.Http.HEADER_USER_AGENT, AppConstants.Http.getUserAgent())
-                builder.header(AppConstants.Http.HEADER_DEVICE_ID, AppConstants.Http.getDeviceId())
-                builder.header(AppConstants.Http.HEADER_DEVICE_LAN, AppConstants.Http.getDeviceLan())
-                builder.header(AppConstants.Http.HEADER_APP_VERSION, AppConstants.Http.getAppVersion())
+                builder.header(AppConstants.Http.HEADER_USER_AGENT, AppConstants.Http.userAgent)
+                builder.header(AppConstants.Http.HEADER_DEVICE_ID, AppConstants.Http.deviceId)
+                builder.header(AppConstants.Http.HEADER_DEVICE_LAN, AppConstants.Http.deviceLan)
+                builder.header(AppConstants.Http.HEADER_APP_VERSION, AppConstants.Http.appVersion)
             }
 
             token?.let {
