@@ -25,11 +25,6 @@ import androidx.annotation.NonNull;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by 5Mall<zhangwei> on 2018/11/9
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public class RoundedDrawable extends Drawable {
 
     public static final String TAG = "RoundedDrawable";

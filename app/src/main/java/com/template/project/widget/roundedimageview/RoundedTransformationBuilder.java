@@ -11,11 +11,6 @@ import com.squareup.picasso.Transformation;
 
 import java.util.Arrays;
 
-/**
- * Created by 5Mall<zhangwei> on 2018/11/9
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public final class RoundedTransformationBuilder {
 
     private final DisplayMetrics mDisplayMetrics;

@@ -16,11 +16,7 @@ import com.template.project.R;
 import butterknife.BindView;
 
 
-/**
- * QSCRefreshHeaderView
- * Created by smileCloud on 16/8/8.
- */
-public class QSCRefreshHeaderView extends RelativeLayout implements SwipeRefreshTrigger, SwipeTrigger {
+public class GlobalRefreshHeaderView extends RelativeLayout implements SwipeRefreshTrigger, SwipeTrigger {
 
     @BindView(R.id.ivRefresh)
     ImageView mIvRefresh;
@@ -36,15 +32,15 @@ public class QSCRefreshHeaderView extends RelativeLayout implements SwipeRefresh
 
     ObjectAnimator animator;
 
-    public QSCRefreshHeaderView(Context context) {
+    public GlobalRefreshHeaderView(Context context) {
         this(context, null);
     }
 
-    public QSCRefreshHeaderView(Context context, AttributeSet attrs) {
+    public GlobalRefreshHeaderView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public QSCRefreshHeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GlobalRefreshHeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         refreshing = getResources().getString(R.string.refreshing);
         pull_to_refresh = getResources().getString(R.string.pull_to_refresh);

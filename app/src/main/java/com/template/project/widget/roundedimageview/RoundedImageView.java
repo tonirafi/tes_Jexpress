@@ -22,11 +22,6 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.template.project.R;
 
 
-/**
- * Created by 5Mall<zhangwei> on 2018/11/9
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 public class RoundedImageView extends AppCompatImageView {
 
     // Constants for tile mode attributes

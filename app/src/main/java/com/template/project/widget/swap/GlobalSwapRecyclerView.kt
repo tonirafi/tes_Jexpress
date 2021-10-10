@@ -23,21 +23,18 @@ import com.template.project.adapter.FooterCard
 import com.template.project.utils.LogUtil
 import java.lang.ref.WeakReference
 
-/**
- * SwapRecyclerView
- * Created by smileCloud on 16/8/30.
- */
-class QSCSwapRecyclerView @JvmOverloads constructor(
+
+class GlobalSwapRecyclerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
-    var headerView: QSCRefreshHeaderView? = null
+    var headerView: GlobalRefreshHeaderView? = null
 
-    var mSwipeLoadMoreFooter: QSCLoadMoreFooterView? = null
+    var mSwipeLoadMoreFooter: GlobalLoadMoreFooterView? = null
     private val style: Int
     private val autoLoadMore: Boolean
-    var emptyAdapter: QSCEmptyAdapter? = null
+    var emptyAdapter: GlobalEmptyAdapter? = null
         private set
 
     var customRecyclerView: RecyclerView? = null
@@ -205,7 +202,7 @@ class QSCSwapRecyclerView @JvmOverloads constructor(
     }
 
     fun setAdapter(adapter: RecyclerView.Adapter<*>, emptyType: Int) {
-        emptyAdapter = QSCEmptyAdapter(adapter, emptyType)
+        emptyAdapter = GlobalEmptyAdapter(adapter, emptyType)
         emptyAdapter!!.setHasStableIds(adapter.hasStableIds())
         customRecyclerView!!.adapter = emptyAdapter
     }
@@ -266,7 +263,7 @@ class QSCSwapRecyclerView @JvmOverloads constructor(
         super.onDetachedFromWindow()
     }
 
-    private class InnerOnPreDrawListener(var ref: WeakReference<QSCSwapRecyclerView>) :
+    private class InnerOnPreDrawListener(var ref: WeakReference<GlobalSwapRecyclerView>) :
         ViewTreeObserver.OnPreDrawListener {
         override fun onPreDraw(): Boolean {
             val swapRecyclerView = ref.get()

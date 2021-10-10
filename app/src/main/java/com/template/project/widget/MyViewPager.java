@@ -13,11 +13,6 @@ import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.lang.reflect.Field;
 
-/**
- * Created by 5Mall<zhangwei> on 2018/10/29
- * Email:zhangwei@qingsongchou.com
- * 描述： 可控制页面切换速度
- */
 public class MyViewPager extends UltraViewPager {
 
     public MyViewPager(Context context) {

@@ -10,11 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-/**
- * Created by smileCloud on 16/10/24.
- */
 
-public class QSCEmptyAdapter extends RecyclerView.Adapter {
+public class GlobalEmptyAdapter extends RecyclerView.Adapter {
 
     private int emptyType;
     private String text;
@@ -25,11 +22,11 @@ public class QSCEmptyAdapter extends RecyclerView.Adapter {
     private RecyclerView.Adapter mAdapter;
     private static int Empty = 1000001;
 
-    public QSCEmptyAdapter(RecyclerView.Adapter adapter) {
+    public GlobalEmptyAdapter(RecyclerView.Adapter adapter) {
         this(adapter, CommonEmptyFactory.COMMON_EMPTY);
     }
 
-    public QSCEmptyAdapter(RecyclerView.Adapter adapter, int emptyType) {
+    public GlobalEmptyAdapter(RecyclerView.Adapter adapter, int emptyType) {
         this.mAdapter = adapter;
         this.emptyType = emptyType;
     }
@@ -75,32 +72,32 @@ public class QSCEmptyAdapter extends RecyclerView.Adapter {
     private final RecyclerView.AdapterDataObserver innerObserver = new RecyclerView.AdapterDataObserver() {
         @Override
         public void onChanged() {
-            QSCEmptyAdapter.this.notifyDataSetChanged();
+            GlobalEmptyAdapter.this.notifyDataSetChanged();
         }
 
         @Override
         public void onItemRangeInserted(int positionStart, int itemCount) {
-            QSCEmptyAdapter.this.notifyItemRangeInserted(positionStart, itemCount);
+            GlobalEmptyAdapter.this.notifyItemRangeInserted(positionStart, itemCount);
         }
 
         @Override
         public void onItemRangeRemoved(int positionStart, int itemCount) {
-            QSCEmptyAdapter.this.notifyItemRangeRemoved(positionStart, itemCount);
+            GlobalEmptyAdapter.this.notifyItemRangeRemoved(positionStart, itemCount);
         }
 
         @Override
         public void onItemRangeChanged(int positionStart, int itemCount) {
-            QSCEmptyAdapter.this.notifyItemRangeChanged(positionStart, itemCount);
+            GlobalEmptyAdapter.this.notifyItemRangeChanged(positionStart, itemCount);
         }
 
         @Override
         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-            QSCEmptyAdapter.this.notifyItemMoved(fromPosition, toPosition);
+            GlobalEmptyAdapter.this.notifyItemMoved(fromPosition, toPosition);
         }
 
         @Override
         public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
-            QSCEmptyAdapter.this.notifyItemRangeChanged(positionStart, itemCount, payload);
+            GlobalEmptyAdapter.this.notifyItemRangeChanged(positionStart, itemCount, payload);
         }
     };
 

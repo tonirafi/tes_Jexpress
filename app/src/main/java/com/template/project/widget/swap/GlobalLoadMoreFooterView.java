@@ -11,10 +11,7 @@ import com.aspsine.swipetoloadlayout.SwipeLoadMoreTrigger;
 import com.aspsine.swipetoloadlayout.SwipeTrigger;
 import com.template.project.R;
 
-/**
- * Created by wsl on 16-7-20.
- */
-public class QSCLoadMoreFooterView extends View implements SwipeTrigger, SwipeLoadMoreTrigger {
+public class GlobalLoadMoreFooterView extends View implements SwipeTrigger, SwipeLoadMoreTrigger {
 
     private Paint linePaint;
     private Paint textPaint;
@@ -25,15 +22,15 @@ public class QSCLoadMoreFooterView extends View implements SwipeTrigger, SwipeLo
     public final String load_completed;
     public final String loading;
 
-    public QSCLoadMoreFooterView(Context context) {
+    public GlobalLoadMoreFooterView(Context context) {
         this(context, null);
     }
 
-    public QSCLoadMoreFooterView(Context context, AttributeSet attrs) {
+    public GlobalLoadMoreFooterView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public QSCLoadMoreFooterView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public GlobalLoadMoreFooterView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         release_to_load = getResources().getString(R.string.release_to_load);
         pull_up_to_load = getResources().getString(R.string.pull_up_to_load);
