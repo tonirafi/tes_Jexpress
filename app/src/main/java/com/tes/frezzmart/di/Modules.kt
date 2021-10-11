@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit
 
 val appModule = module {
         factory {restAdapter() }
-        single { HomeRepository(get()) }
+        single { HomeRepository(get(),get()) }
         single { provideDataBase(androidApplication()) }
         single { provideDao(get()) }
         viewModel { HomeViewModel(get()) }

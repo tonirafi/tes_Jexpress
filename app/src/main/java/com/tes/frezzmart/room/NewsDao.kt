@@ -12,9 +12,9 @@ interface NewsDao {
     fun getAllNews(): LiveData<List<NewsModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addNews(addUser: NewsModel)
+    fun addNews(addNews: NewsModel)
 
 
     @Delete
-    fun deleteNews(deleteUser: NewsModel)
+    fun deleteNews(deleteNews: NewsModel)
 }
