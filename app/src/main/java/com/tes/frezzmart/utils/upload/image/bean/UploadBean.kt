@@ -1,10 +1,10 @@
-package com.tes.frezzmart.service.upload.image.bean
+package com.tes.frezzmart.utils.upload.image.bean
 
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
-import com.tes.frezzmart.service.upload.image.ImageUploadStatus
-import com.tes.frezzmart.service.upload.image.ImageUploadingListener
+import com.tes.frezzmart.utils.upload.image.ImageUploadStatus
+import com.tes.frezzmart.utils.upload.image.ImageUploadingListener
 
 class UploadBean(val uuid: Int, val imgPath: String, private var listener: ImageUploadingListener?) : UploadCallback {
 

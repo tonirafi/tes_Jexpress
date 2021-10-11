@@ -1,6 +1,6 @@
-package com.tes.frezzmart.service.upload.image.bean
+package com.tes.frezzmart.utils.upload.image.bean
 
-import com.tes.frezzmart.service.upload.image.ImageUploadStatus
+import com.tes.frezzmart.utils.upload.image.ImageUploadStatus
 import com.tes.frezzmart.http.bean.BaseBean
 
 

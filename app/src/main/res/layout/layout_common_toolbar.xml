@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     style="@style/ToolbarStyle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/shape_rect_c4_white"
+        android:drawableRight="@drawable/ic_baseline_search_24"
+        android:drawableTint="@color/text_black"
+        android:paddingRight="@dimen/comm_gap_10"
+        android:paddingLeft="@dimen/comm_gap_10"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/comm_gap_10"
+        android:id="@+id/edSearch" />
+
+
+</androidx.appcompat.widget.Toolbar>

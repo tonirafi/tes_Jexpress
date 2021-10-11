@@ -20,8 +20,8 @@ import com.tes.frezzmart.adapter.PhotoCardAdapter;
 import com.tes.frezzmart.adapter.card.UploadImageUnitCard;
 import com.tes.frezzmart.adapter.providers.UploadImageUnitCardProvider;
 import com.tes.frezzmart.router.IntentUtil;
-import com.tes.frezzmart.service.upload.ImageUploadManager;
-import com.tes.frezzmart.service.upload.image.bean.ImageBean;
+import com.tes.frezzmart.utils.upload.ImageUploadManager;
+import com.tes.frezzmart.utils.upload.image.bean.ImageBean;
 import com.tes.frezzmart.view.GridSpacingItemDecoration;
 import com.walkermanx.photopicker.PhotoPreview;
 

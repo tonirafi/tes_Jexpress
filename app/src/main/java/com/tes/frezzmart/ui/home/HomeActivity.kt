@@ -1,8 +1,12 @@
 package com.tes.frezzmart.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener
 import com.aspsine.swipetoloadlayout.OnRefreshListener
@@ -15,8 +19,6 @@ import com.tes.frezzmart.utils.AppUtil
 import com.tes.frezzmart.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.layout_card_list_common.*
 import kotlinx.android.synthetic.main.layout_common_toolbar.*
-import kotlinx.android.synthetic.main.layout_common_toolbar.toolbar
-import kotlinx.android.synthetic.main.web_view_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -24,9 +26,10 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     private  val dashboardViewModel: HomeViewModel by viewModel()
     private val cardAdapter: CardAdapter = CardAdapter(this)
-    private var search = ""
 
+    private var search = "kosong"
 
+    var myMenu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +47,11 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
         }
         cardAdapter.setOnItemClickListener(this)
         toolbar.fitsSystemWindows = false
-        toolbar.title = "Awesome App"
+        toolbar.title = "News App"
         toolbar.setTitleTextColor(resources.getColor(R.color.white))
         setSupportActionBar(toolbar)
         globalSwapRecyclerView.setAdapter(cardAdapter)
         dashboardViewModel.preloadCards(false)
-        search="tes"
         getDataHome()
         globalSwapRecyclerView.setRefreshEnabled(true)
         globalSwapRecyclerView.setOnRefreshListener(this)
@@ -64,7 +66,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
         dashboardViewModel.listBaseCardPre.observe(this, Observer {
             hideAnimationOrLoading()
-            updateCards(it,true)
+            updateCards(it, true)
             globalSwapRecyclerView.onCompleteRefresh()
         })
         dashboardViewModel.listBaseCard.observe(this, Observer {
@@ -120,53 +122,49 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     override fun onItemOnclick(position: Int) {
 
-//        val baseCard = cardAdapter.list[position]
-//        if (baseCard is ImageItemCard && baseCard.imageData != null) {
-//                IntentUtil.intentToDetailImage(this, baseCard.imageData)
-//            }
-//
-//        if (baseCard is ImageItemGridCard && baseCard.imageData != null) {
-//            IntentUtil.intentToDetailImage(this, baseCard.imageData)
-//        }
-
-
     }
 
 
     fun getDataHome(){
-        dashboardViewModel.loadDataHome(true,search)
+        dashboardViewModel.loadDataHome(true, search)
 
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        this.menuInflater.inflate(R.menu.list_grid, menu)
-//
-//        this@HomeActivity.menuGroup = (menu?.findItem(R.id.grid) to menu?.findItem(R.id.list)).also { t ->
-//            t.toList().forEach {
-//                it?.actionView?.setOnClickListener { _ ->
-//                    onOptionsItemSelected(it)
-//                }
-//            }
-//        }
+        this.menuInflater.inflate(R.menu.menu, menu)
+        myMenu=menu
         return true
     }
 
 
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-//        R.id.grid -> {
-//            vertical=false
-//            cardAdapter.clearList()
-//            dashboardViewModel.preloadCards(vertical)
-//            getDataHome()
-//            setGridOrList()
-//            true
-//        }
 
-        else -> super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.search -> {
+                edSearch.visibility = View.VISIBLE
+                edSearch.isFocusable = true
+                item.isVisible = false
+                edSearch.requestFocus()
+                val imm: InputMethodManager =getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(edSearch, InputMethodManager.SHOW_IMPLICIT)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
-
+    override fun onBackPressed() {
+        if (edSearch.isVisible) {
+            edSearch.visibility=View.GONE
+            val item: MenuItem = myMenu!!.findItem(R.id.search)
+            item.isVisible = true
+        } else {
+            onComplete()
+        }
+    }
 
 
 }

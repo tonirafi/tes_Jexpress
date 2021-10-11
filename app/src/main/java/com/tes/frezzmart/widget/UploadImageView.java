@@ -19,12 +19,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.tes.frezzmart.R;
-import com.tes.frezzmart.service.upload.ImageUploadCallback;
-import com.tes.frezzmart.service.upload.ImageUploadManager;
-import com.tes.frezzmart.service.upload.image.IUpdateView;
-import com.tes.frezzmart.service.upload.image.ImageUploadStatus;
-import com.tes.frezzmart.service.upload.image.bean.ImageBean;
-import com.tes.frezzmart.service.upload.image.bean.UploadBean;
+import com.tes.frezzmart.utils.upload.ImageUploadCallback;
+import com.tes.frezzmart.utils.upload.ImageUploadManager;
+import com.tes.frezzmart.utils.upload.image.IUpdateView;
+import com.tes.frezzmart.utils.upload.image.ImageUploadStatus;
+import com.tes.frezzmart.utils.upload.image.bean.ImageBean;
+import com.tes.frezzmart.utils.upload.image.bean.UploadBean;
 import com.tes.frezzmart.utils.PicassoUtil;
 
 import java.io.File;

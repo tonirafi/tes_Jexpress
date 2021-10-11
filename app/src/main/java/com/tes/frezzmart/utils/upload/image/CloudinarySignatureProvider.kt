@@ -1,8 +1,8 @@
-package com.tes.frezzmart.service.upload.image
+package com.tes.frezzmart.utils.upload.image
 
 import com.cloudinary.android.signed.Signature
 import com.cloudinary.android.signed.SignatureProvider
-import com.tes.frezzmart.service.upload.image.bean.CloudinaryConfig
+import com.tes.frezzmart.utils.upload.image.bean.CloudinaryConfig
 
 
 /**

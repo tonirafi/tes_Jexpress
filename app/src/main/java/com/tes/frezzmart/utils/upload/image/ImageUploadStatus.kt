@@ -1,4 +1,4 @@
-package com.tes.frezzmart.service.upload.image
+package com.tes.frezzmart.utils.upload.image
 
 /**
  *   Created by 5Mall<zhangwei> on 2018/8/13

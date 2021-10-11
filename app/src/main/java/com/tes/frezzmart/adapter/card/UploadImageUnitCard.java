@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.tes.frezzmart.adapter.BaseCard;
-import com.tes.frezzmart.service.upload.image.bean.ImageBean;
+import com.tes.frezzmart.utils.upload.image.bean.ImageBean;
 
 
 public class UploadImageUnitCard extends BaseCard {

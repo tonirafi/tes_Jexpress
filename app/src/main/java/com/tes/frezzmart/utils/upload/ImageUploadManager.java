@@ -1,13 +1,13 @@
-package com.tes.frezzmart.service.upload;
+package com.tes.frezzmart.utils.upload;
 
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
-import com.tes.frezzmart.service.upload.image.ImageUploader;
-import com.tes.frezzmart.service.upload.image.ImageUploadingListener;
-import com.tes.frezzmart.service.upload.image.bean.ImageBean;
-import com.tes.frezzmart.service.upload.image.bean.UploadBean;
+import com.tes.frezzmart.utils.upload.image.ImageUploader;
+import com.tes.frezzmart.utils.upload.image.ImageUploadingListener;
+import com.tes.frezzmart.utils.upload.image.bean.ImageBean;
+import com.tes.frezzmart.utils.upload.image.bean.UploadBean;
 
 import java.util.List;
 

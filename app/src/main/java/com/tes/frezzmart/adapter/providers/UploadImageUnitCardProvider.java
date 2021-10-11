@@ -12,7 +12,7 @@ import com.tes.frezzmart.adapter.CardMap;
 import com.tes.frezzmart.adapter.CommonVh;
 import com.tes.frezzmart.adapter.ItemViewProvider;
 import com.tes.frezzmart.adapter.card.UploadImageUnitCard;
-import com.tes.frezzmart.service.upload.image.bean.ImageBean;
+import com.tes.frezzmart.utils.upload.image.bean.ImageBean;
 import com.tes.frezzmart.widget.UploadImageView;
 
 

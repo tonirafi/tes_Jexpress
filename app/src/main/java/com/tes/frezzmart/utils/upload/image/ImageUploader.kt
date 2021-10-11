@@ -1,11 +1,11 @@
-package com.tes.frezzmart.service.upload.image
+package com.tes.frezzmart.utils.upload.image
 
 import android.content.Context
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.preprocess.BitmapEncoder
-import com.tes.frezzmart.service.upload.BitmapRotator
-import com.tes.frezzmart.service.upload.MyImagePreprocessChain
-import com.tes.frezzmart.service.upload.image.bean.UploadBean
+import com.tes.frezzmart.utils.upload.BitmapRotator
+import com.tes.frezzmart.utils.upload.MyImagePreprocessChain
+import com.tes.frezzmart.utils.upload.image.bean.UploadBean
 
 
 /**

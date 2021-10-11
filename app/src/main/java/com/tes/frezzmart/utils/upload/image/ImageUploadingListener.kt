@@ -1,6 +1,6 @@
-package com.tes.frezzmart.service.upload.image
+package com.tes.frezzmart.utils.upload.image
 
-import com.tes.frezzmart.service.upload.image.bean.UploadBean
+import com.tes.frezzmart.utils.upload.image.bean.UploadBean
 
 /**
  *

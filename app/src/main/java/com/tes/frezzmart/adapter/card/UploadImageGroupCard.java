@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 
 import com.tes.frezzmart.adapter.EditCard;
-import com.tes.frezzmart.service.upload.image.bean.ImageBean;
+import com.tes.frezzmart.utils.upload.image.bean.ImageBean;
 
 import java.util.ArrayList;
 import java.util.List;

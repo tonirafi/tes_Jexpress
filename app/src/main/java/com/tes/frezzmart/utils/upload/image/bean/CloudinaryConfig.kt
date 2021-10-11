@@ -1,4 +1,4 @@
-package com.tes.frezzmart.service.upload.image.bean
+package com.tes.frezzmart.utils.upload.image.bean
 
 import android.text.TextUtils
 import com.google.gson.annotations.SerializedName

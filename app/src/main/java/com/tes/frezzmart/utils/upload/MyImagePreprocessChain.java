@@ -1,4 +1,4 @@
-package com.tes.frezzmart.service.upload;
+package com.tes.frezzmart.utils.upload;
 
 import android.graphics.Bitmap;
 

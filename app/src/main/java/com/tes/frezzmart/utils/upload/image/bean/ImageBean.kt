@@ -1,9 +1,9 @@
-package com.tes.frezzmart.service.upload.image.bean
+package com.tes.frezzmart.utils.upload.image.bean
 
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.tes.frezzmart.service.upload.image.ImageUploadStatus
+import com.tes.frezzmart.utils.upload.image.ImageUploadStatus
 import com.tes.frezzmart.adapter.BaseCard
 import com.tes.frezzmart.utils.LogUtil
 import com.tes.frezzmart.utils.StringUtil

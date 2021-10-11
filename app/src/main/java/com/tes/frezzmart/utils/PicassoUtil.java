@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.tes.frezzmart.R;
-import com.tes.frezzmart.service.upload.image.bean.ImageBean;
+import com.tes.frezzmart.utils.upload.image.bean.ImageBean;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 

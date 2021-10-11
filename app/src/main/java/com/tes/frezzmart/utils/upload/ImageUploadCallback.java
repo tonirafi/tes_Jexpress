@@ -1,8 +1,8 @@
-package com.tes.frezzmart.service.upload;
+package com.tes.frezzmart.utils.upload;
 
-import com.tes.frezzmart.service.upload.image.ImageUploadingListener;
-import com.tes.frezzmart.service.upload.image.IUpdateView;
-import com.tes.frezzmart.service.upload.image.bean.UploadBean;
+import com.tes.frezzmart.utils.upload.image.ImageUploadingListener;
+import com.tes.frezzmart.utils.upload.image.IUpdateView;
+import com.tes.frezzmart.utils.upload.image.bean.UploadBean;
 import com.tes.frezzmart.utils.LogUtil;
 
 import org.jetbrains.annotations.NotNull;
