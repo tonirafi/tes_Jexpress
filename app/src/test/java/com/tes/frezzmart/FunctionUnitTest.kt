@@ -22,7 +22,6 @@ class FunctionUnitTest {
     @Test
     fun formatDate() {
 
-
         val cal = Calendar.getInstance()
         val strDate ="2021-09-16T16:03:48Z".take(10)
         val sdf = SimpleDateFormat("dd-MM-yyyy")

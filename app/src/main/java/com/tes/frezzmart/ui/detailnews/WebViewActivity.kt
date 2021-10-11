@@ -22,11 +22,13 @@ import com.tes.frezzmart.router.RouterConstants
 import com.tes.frezzmart.ui.base.BaseActivity
 import com.tes.frezzmart.utils.AppUtil
 import com.tes.frezzmart.utils.AppUtilNew
+import kotlinx.android.synthetic.main.item_connection.*
 import kotlinx.android.synthetic.main.item_empty_error.*
 import kotlinx.android.synthetic.main.web_view_activity.*
+import kotlinx.android.synthetic.main.web_view_activity.web_view
 
 
-open class WebViewActivity : BaseActivity() {
+open class WebViewActivity : BaseActivity(){
 
     private val PERMISSION_ALL = 1
 
@@ -111,15 +113,7 @@ open class WebViewActivity : BaseActivity() {
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 refreshLayout.isRefreshing=true
-                if (!AppUtilNew.isNetworkAvailable(MyApplication.getContext())) {
-                    tvInfo.text="Failed load the content."
-                    empty_error.visibility=View.VISIBLE
-                    web_view.visibility=View.GONE
-                }else{
-                    empty_error.visibility=View.GONE
-                    web_view.visibility=View.VISIBLE
-
-                }
+                checkConnection()
 
             }
 
@@ -315,6 +309,20 @@ open class WebViewActivity : BaseActivity() {
             it.destroy()
         }
         super.onDestroy()
+    }
+
+    fun checkConnection(){
+        if (!AppUtilNew.isNetworkAvailable(MyApplication.getContext())) {
+            tvInfo.text="Failed load the content."
+            empty_error.visibility=View.VISIBLE
+            lnrlConnection.visibility=View.VISIBLE
+            web_view.visibility=View.GONE
+        }else{
+            empty_error.visibility=View.GONE
+            lnrlConnection.visibility=View.GONE
+            web_view.visibility=View.VISIBLE
+
+        }
     }
 
 

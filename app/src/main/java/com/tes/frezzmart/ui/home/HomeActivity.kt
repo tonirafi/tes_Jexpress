@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener
@@ -25,13 +26,21 @@ import com.tes.frezzmart.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.layout_card_list_common.*
 import kotlinx.android.synthetic.main.layout_common_toolbar.*
 import kotlinx.android.synthetic.main.layout_common_toolbar.toolbar
-import kotlinx.android.synthetic.main.web_view_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
 class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, CardAdapter.OnItemClickListener,
     ItemCardClickListener {
+
+
+    private val viewOffline by lazy {
+        if (footViewStubTop.layoutResource == 0) {
+            footViewStubTop.layoutResource = R.layout.item_connection
+        }
+
+        footViewStubTop.inflate().findViewById<LinearLayout>(R.id.lnrlConnection)
+    }
 
     private  val homeViewModel: HomeViewModel by viewModel()
     private val cardAdapter: CardAdapter = CardAdapter(this)
@@ -94,6 +103,9 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
                 }
             }
         )
+
+
+
     }
 
 
@@ -162,9 +174,11 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     fun getDataHome(){
         if (!AppUtilNew.isNetworkAvailable(MyApplication.getContext())) {
+            viewOffline.visibility=View.VISIBLE
             homeViewModel.cardOffline()
 
         }else{
+            viewOffline.visibility=View.GONE
             homeViewModel.loadDataHome(true, search)
 
         }
@@ -215,6 +229,8 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
             getDataHome()
         }
     }
+
+
 
 
 }
