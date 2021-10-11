@@ -3,7 +3,7 @@ package com.template.project
 import android.app.Activity
 import androidx.multidex.MultiDexApplication
 import cn.campusapp.router.Router
-import com.template.project.http.api.RestAdapter
+import com.template.project.di.appModule
 import com.template.project.router.RouteInterceptor
 import com.template.project.router.RouterConstants
 import com.template.project.router.RouterMap
@@ -12,7 +12,6 @@ import io.reactivex.plugins.RxJavaPlugins
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 import java.util.*
 
 
@@ -27,10 +26,6 @@ open class MyApplication : MultiDexApplication() {
         mInstance = this
 
 
-        var listofModules = module {
-            single { RestAdapter() }
-        }
-
         Router.initActivityRouter(this, RouterMap(), RouterConstants.Common.SCHEME)
         Router.setDebugMode(BuildConfig.DEBUG)
         Router.setInterceptor(RouteInterceptor())
@@ -39,7 +34,7 @@ open class MyApplication : MultiDexApplication() {
         startKoin {
             androidLogger()
             androidContext(this@MyApplication)
-            modules(listofModules)
+            modules(appModule)
         }
         RxJavaPlugins.setErrorHandler {
             it.printStackTrace()

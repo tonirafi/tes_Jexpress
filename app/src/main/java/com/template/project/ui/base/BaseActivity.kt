@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.template.project.AppConstants
-import com.template.project.http.api.RestAdapter
 import com.template.project.http.bean.Act
 import com.template.project.recevers.BaseActBroadcastReceiver
 import com.template.project.utils.LocaleUtil
