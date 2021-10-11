@@ -12,6 +12,7 @@ object AppConstants {
     const val TOKEN_SERVER = "token_server"
     const val USER_LOGIN = "user_login"
     const val USER_ID = "user_id"
+    const val TOKEN = "28bb3a3ee3dc475a903e9d274927cfe8"
 
     object ResponeCode {
         const val SUCCESED = "200"

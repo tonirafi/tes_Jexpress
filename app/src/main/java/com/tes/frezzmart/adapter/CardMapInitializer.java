@@ -8,14 +8,15 @@ import java.util.List;
 
 public class CardMapInitializer implements ICardMapInitializer {
 
-    private static final String CARD_DIR = "com.template.project.adapter.card.";
-    private static final String PROVIDER_DIR = "com.template.project.adapter.providers.";
+    private static final String CARD_DIR = "com.tes.frezzmart.adapter.card.";
+    private static final String PROVIDER_DIR = "com.tes.frezzmart.adapter.providers.";
 
     @Override
     public void initRouterTable(List<String> cardNameList, List<String> providerNameList) {
         addCardProviderPair(cardNameList, providerNameList, "LabelCard", "LabelCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "VPListCard", "VPListCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "MoreCard", "MoreCardProvider");
+        addCardProviderPair(cardNameList, providerNameList, "NewsItemCard", "NewsItemCardProvider");
 
     }
 

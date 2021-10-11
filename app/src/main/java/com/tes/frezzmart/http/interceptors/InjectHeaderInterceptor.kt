@@ -9,22 +9,8 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 
-/**
- * Created by 5Mall<zhangwei> on 2018/7/20
- * Email:zhangwei@qingsongchou.com
- * 描述：
- */
 class InjectHeaderInterceptor : Interceptor {
-    /**
-     * User-Agent: PeduliSehat/1.0 (Android5.0.1 API21)
-     * Qsc-Peduli-Token:
-     * Authorization: UID:Signature
-     * ExpireIn:
-     * Platform:Android
-     * DeviceID:
-     * DeviceLan: 设备语言 en zh in
-     *
-     */
+
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         synchronized(InjectHeaderInterceptor::class.java) {

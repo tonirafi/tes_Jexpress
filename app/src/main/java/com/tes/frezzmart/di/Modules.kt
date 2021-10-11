@@ -4,8 +4,12 @@ import com.google.gson.GsonBuilder
 import com.tes.frezzmart.BuildConfig
 import com.tes.frezzmart.MyApplication.Companion.getContext
 import com.tes.frezzmart.http.api.ApiService
+import com.tes.frezzmart.ui.home.HomeRepository
+import com.tes.frezzmart.ui.home.HomeViewModel
 import com.tes.frezzmart.utils.AppUtilNew.Companion.isNetworkAvailable
 import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -13,12 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-
-
-    val appModule = module {
+val appModule = module {
         factory {restAdapter() }
-//        single { HomeRepository(get()) }
-//        viewModel { HomeViewModel(get()) }
+        single { HomeRepository(get()) }
+        viewModel { HomeViewModel(get()) }
     }
 
 
@@ -26,6 +28,8 @@ import java.util.concurrent.TimeUnit
         val retrofit: Retrofit
         try {
 
+            val logging = HttpLoggingInterceptor()
+            logging.level = HttpLoggingInterceptor.Level.BODY
 
             var onlineInterceptor = Interceptor { chain ->
                 val response: Response = chain.proceed(chain.request())
@@ -61,6 +65,7 @@ import java.util.concurrent.TimeUnit
                 .connectTimeout(10, TimeUnit.MINUTES)
                 .readTimeout(10, TimeUnit.MINUTES)
                 .addInterceptor(offlineInterceptor)
+                .addInterceptor(logging)
                 .addNetworkInterceptor(onlineInterceptor)
                 .connectTimeout(90.toLong(), TimeUnit.SECONDS)
                 .readTimeout(90.toLong(), TimeUnit.SECONDS)
