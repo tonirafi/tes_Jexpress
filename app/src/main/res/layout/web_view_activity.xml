@@ -30,6 +30,14 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="match_parent" />
+            <include
+                layout="@layout/item_empty_error"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:visibility="gone"
+                tools:ignore="UnknownIdInLayout" />
+
 
         </LinearLayout>
 

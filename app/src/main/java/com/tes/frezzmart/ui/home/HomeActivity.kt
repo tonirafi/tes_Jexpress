@@ -190,6 +190,8 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
             edSearch.visibility=View.GONE
             val item: MenuItem = myMenu!!.findItem(R.id.search)
             item.isVisible = true
+            search=""
+            getDataHome()
         } else {
             onComplete()
         }

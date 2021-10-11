@@ -10,15 +10,19 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.webkit.*
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import com.tes.frezzmart.MyApplication
 import com.tes.frezzmart.R
 import com.tes.frezzmart.http.bean.ArticlesItem
 import com.tes.frezzmart.router.RouterConstants
 import com.tes.frezzmart.ui.base.BaseActivity
 import com.tes.frezzmart.utils.AppUtil
+import com.tes.frezzmart.utils.AppUtilNew
+import kotlinx.android.synthetic.main.item_empty_error.*
 import kotlinx.android.synthetic.main.web_view_activity.*
 
 
@@ -38,6 +42,9 @@ open class WebViewActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.web_view_activity)
+
+
+
         val uri = parseIntent(intent)
         uri?.getQueryParameter(RouterConstants.Params.PRE_LOAD)?.let {
             var articles= AppUtil.getGsonInstance().fromJson<ArticlesItem>(it, ArticlesItem::class.java)
@@ -62,6 +69,11 @@ open class WebViewActivity : BaseActivity() {
         refreshLayout.isEnabled = false
         refreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.text_green)
 
+
+
+        btReload.setOnClickListener {
+            web_view.loadUrl(lastUrl)
+        }
 
 
         refreshLayout.setOnRefreshListener {
@@ -95,11 +107,19 @@ open class WebViewActivity : BaseActivity() {
         web_view.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 refreshLayout.isRefreshing=false
-
             }
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 refreshLayout.isRefreshing=true
+                if (!AppUtilNew.isNetworkAvailable(MyApplication.getContext())) {
+                    tvInfo.text="Failed load the content."
+                    empty_error.visibility=View.VISIBLE
+                    web_view.visibility=View.GONE
+                }else{
+                    empty_error.visibility=View.GONE
+                    web_view.visibility=View.VISIBLE
+
+                }
 
             }
 
@@ -108,6 +128,7 @@ open class WebViewActivity : BaseActivity() {
                     request: WebResourceRequest?,
                     error: WebResourceError?
             ) {
+                empty_error.visibility=View.VISIBLE
                 refreshLayout.isRefreshing=false
 
             }
@@ -117,8 +138,6 @@ open class WebViewActivity : BaseActivity() {
 
 
         web_view.webChromeClient = object : WebChromeClient() {
-            // For 3.0+ Devices (Start)
-            // onActivityResult attached before constructor
             protected fun openFileChooser(
                     uploadMsg: ValueCallback<Uri?>?,
                     acceptType: String?
