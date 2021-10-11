@@ -9,6 +9,6 @@ interface ApiService {
 
     @Headers("Content-Type: application/json")
     @GET(BuildConfig.URL_DOMAIN + "v2/everything")
-    fun listNews(@Query("q") search:String,@Query("page") page:Int, @Query("pageSize") limit:Int,  @Query("apiKey") accessToken:String, @Header("Cache-Control") cache_control: String?): Observable<NewsResponse>
+    fun listNews(@Query("q") search:String,@Query("page") page:Int, @Query("pageSize") limit:Int,  @Query("sortBy") sortBy:String,  @Query("apiKey") accessToken:String, @Header("Cache-Control") cache_control: String?): Observable<NewsResponse>
 
 }
