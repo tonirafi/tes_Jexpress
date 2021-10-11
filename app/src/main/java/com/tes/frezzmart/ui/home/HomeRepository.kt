@@ -16,4 +16,6 @@ class HomeRepository(private val api: ApiService):KoinComponent {
           .observeOn(AndroidSchedulers.mainThread())
 
     }
+
+
 }

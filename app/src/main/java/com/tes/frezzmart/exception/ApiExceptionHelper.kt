@@ -98,20 +98,23 @@ object ApiExceptionHelper {
         return ex
     }
 
-    //    protected static void throwServerException(BaseResponse... its) throws ServerException {
-    //        if (its == null || its.length == 0) return;
-    //        for (BaseResponse it : its) {
-    //            if (!it.isSuccess()) {
-    //                throw new ServerException(it.getMsg(), it.getCode());
-    //            }
-    //        }
-    //
-    //    }
-    //    protected static void throwAllServerException(BaseResponse... its) throws ServerException {
-    //        if (its == null || its.length == 0) return;
-    //        throwServerException(its);
-    //        throwServerExceptionIfEmpty(its);
-    //    }
+        @Throws(ServerException::class)
+        fun throwServerException(vararg its: BaseResponse2<*>){
+            if (its == null || its.size == 0) return;
+            for ( it in its) {
+                if (!it.isSuccess) {
+                    throw  ServerException(it.msg, it.code);
+                }
+            }
+
+        }
+
+//    @Throws(ServerException::class)
+//    fun throwAllServerException(vararg its: BaseResponse2<*>) throws ServerException {
+//            if (its == null || its.length == 0) return;
+//            throwServerException(its);
+//            throwServerExceptionIfEmpty(its);
+//        }
     @Throws(ServerException::class)
     fun throwServerExceptionIfEmpty(vararg its: BaseResponse2<*>) {
         if (its == null || its.size == 0) return

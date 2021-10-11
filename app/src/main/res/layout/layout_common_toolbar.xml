@@ -14,6 +14,7 @@
         android:drawableTint="@color/text_black"
         android:paddingRight="@dimen/comm_gap_10"
         android:paddingLeft="@dimen/comm_gap_10"
+        android:maxLength="500"
         android:visibility="gone"
         android:layout_marginRight="@dimen/comm_gap_10"
         android:id="@+id/edSearch" />

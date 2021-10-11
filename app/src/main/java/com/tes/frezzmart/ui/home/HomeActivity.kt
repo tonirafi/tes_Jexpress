@@ -44,7 +44,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     private  val homeViewModel: HomeViewModel by viewModel()
     private val cardAdapter: CardAdapter = CardAdapter(this)
-    private var search = "kosong"
+    private var search = ""
     var myMenu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -130,7 +130,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
         homeViewModel.throwable.observe(this, Observer {
             hideAnimationOrLoading()
-            showMessage(it)
+            showMessage(it.message)
             globalSwapRecyclerView.onCompleteRefresh()
         })
     }
