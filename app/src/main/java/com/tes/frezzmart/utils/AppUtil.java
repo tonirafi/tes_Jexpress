@@ -518,14 +518,7 @@ public static Typeface getFont(Context context, @FontRes int id) {
 
     return id != R.font.helvetica ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT;
 }
-//
-//    /**
-//     * 根据本应用 页面路由规则 判断a/b属于是否同一个页面路由
-//     *
-//     * @param a
-//     * @param b
-//     * @return
-//     */
+
     public static boolean isRouterUriMatch(Uri a, Uri b) {
         if (a == null || b == null) return false;
 
@@ -545,101 +538,7 @@ public static Typeface getFont(Context context, @FontRes int id) {
 
         return true;
     }
-//
-//    public static boolean isValidCode(Context context, String verificationCode) {
-//        if (TextUtils.isEmpty(verificationCode)) {
-//            ToastUtil.show(context.getString(R.string.captcha_is_empty));
-//            return false;
-//        }
-//
-//        if (!TextUtils.isDigitsOnly(verificationCode) || context.getResources().getInteger(R.integer.max_verification_code_length) != verificationCode.length()) {
-//            ToastUtil.show(context.getString(R.string.code_toast_hint));
-//            return false;
-//        }
-//
-//        return true;
-//    }
-//
-//    public static boolean isValidPwd(String pwd, @StringRes int resId) {
-//
-//        if (TextUtils.isEmpty(pwd)) {
-//            ToastUtil.show(R.string.password_is_empty);
-//            return false;
-//        }
-//
-////        if (pwd.length() < context.getResources().getInteger(R.integer.min_pwd_length) || pwd.length() > context.getResources().getInteger(R.integer.max_pwd_length)) {
-////            ToastUtil.show(context.getString(R.string.password_toast_hint));
-////            return false;
-////        }
-//
-//        if (!StringUtil.isPwdValid(pwd)) {
-//            ToastUtil.show(resId);
-//            return false;
-//        }
-//
-//        return true;
-//    }
-//
-//    public static boolean isValidPhoneNum(Context context, String phoneNum) {
-//
-//        if (TextUtils.isEmpty(phoneNum)) {
-//            ToastUtil.show(context.getString(R.string.mobile_number_is_empty));
-//            return false;
-//        }
-//
-//        if (phoneNum.length() < context.getResources().getInteger(R.integer.min_phone_number_length) || phoneNum.length() > context.getResources().getInteger(R.integer.max_phone_number_length)) {
-//            ToastUtil.show(context.getString(R.string.illegal_mobile_number));
-//            return false;
-//        }
-//
-//        return true;
-//    }
-//
-//
-//    public static boolean checkSmsLoginArgs(Context context, String phoneNum, String verificationCode) {
-//        return isValidPhoneNum(context, phoneNum) && isValidCode(context, verificationCode);
-//    }
-//
-//    public static boolean checkPwdLoginArgs(Context context, String phoneNum, String pwd) {
-//        return isValidPhoneNum(context, phoneNum) && isValidPwd(pwd, R.string.password_rule_hint);
-//    }
-//
-//    /**
-//     * 是否组织用户
-//     *
-//     * @param user_type 用户类型 0普通用户 非0 企业组织用户
-//     * @return
-//     */
-//    public static boolean isOrgOwner(int user_type) {
-//        return user_type != 0;
-//    }
-//
-//    public static String getCompatibleThumb(ImageBean imageBean) {
-//        return imageBean == null ? null : imageBean.getCompatibleThumb();
-//    }
-//
-//    public static String getImageUrlOrThumb(ImageBean imageBean) {
-//        if (imageBean == null) return null;
-//
-//        final String url = imageBean.getImageUrl();
-//        return TextUtils.isEmpty(url) ? imageBean.getImgThumb() : url;
-//    }
-//
-//    public static boolean isInvalidContext(@Nullable Activity activity) {
-//        if (activity == null) return true;
-//
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
-//            return activity.isDestroyed() || activity.isFinishing();
-//        }
-//
-//        return activity.isFinishing();
-//    }
-//
-//    /**
-//     * 获取全局性Gson对象 避免日期在序列化/反序列化过程中出现解析异常
-//     *
-//     * @return
-//     */
+
     public static Gson getGsonInstance() {
         return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").create();
     }

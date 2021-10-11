@@ -45,8 +45,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 var baseCards = ArrayList<BaseCard>()
                 var date=""
                 for ( articel in dataArticles!!) {
-                    if(date !=articel?.publishedAt){
-                        date= articel?.publishedAt!!
+                    if(date !=articel?.getDate()){
+                        date= articel?.getDate()!!
                         baseCards.add(DateItemCard(articel))
                     }
                     baseCards.add(NewsItemCard(articel))
@@ -72,8 +72,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 var baseCards = ArrayList<BaseCard>()
                 var date=""
                 for ( articel in dataArticles!!) {
-                    if(date !=articel?.publishedAt){
-                        date= articel?.publishedAt!!
+                    if(date !=articel?.getDate()){
+                        date= articel?.getDate()!!
                         baseCards.add(DateItemCard(articel))
                     }
                     baseCards.add(NewsItemCard(articel))

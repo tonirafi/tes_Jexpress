@@ -60,7 +60,7 @@ public class DateItemCardProvider extends ItemViewProvider<DateItemCard, DateIte
                     return;
                 }
 
-                tvDate.setText(articlesItem.getPublishedAt());
+                tvDate.setText(articlesItem.getDate());
 
 
         }

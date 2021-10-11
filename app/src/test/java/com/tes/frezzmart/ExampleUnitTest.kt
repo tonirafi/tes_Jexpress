@@ -1,8 +1,12 @@
 package com.tes.frezzmart
 
-import org.junit.Test
-
+import androidx.core.util.Preconditions.checkArgument
 import org.junit.Assert.*
+import org.junit.Test
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -16,14 +20,31 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun tes(){
-        var server=4
-        var clien=3
+    fun formatDate() {
 
-        if(server>clien){
-            print("muncul popup")
-        }else{
-            print("Aman")
+
+        val cal = Calendar.getInstance()
+        val strDate ="2021-09-16T16:03:48Z".take(10)
+        val sdf = SimpleDateFormat("dd-MM-yyyy")
+        val date = sdf.parse(strDate)
+        cal.time = date
+
+
+        val formatter =  SimpleDateFormat("MMM dd'"+getDayOfMonthSuffix(cal.get(Calendar.DAY_OF_MONTH))+"', yyyy")
+        val output = formatter.format(date)
+        System.out.println(output)
+
+    }
+
+    private fun getDayOfMonthSuffix(n: Int): String {
+        checkArgument(n in 1..31, "illegal day of month: $n")
+        return if (n in 11..13) {
+            "th"
+        } else when (n % 10) {
+            1 -> "st"
+            2 -> "nd"
+            3 -> "rd"
+            else -> "th"
         }
     }
 }

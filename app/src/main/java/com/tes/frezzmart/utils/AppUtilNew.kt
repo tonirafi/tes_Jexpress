@@ -1,17 +1,21 @@
 package com.tes.frezzmart.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.net.wifi.WifiManager
+import android.os.Build
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.format.Formatter
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.widget.EditText
+import androidx.annotation.RequiresApi
+import androidx.core.util.Preconditions
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +32,10 @@ import java.lang.reflect.Type
 import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.SocketException
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -153,6 +161,28 @@ class AppUtilNew {
             val connectivityManager: ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetworkInfo = connectivityManager.getActiveNetworkInfo()
             return activeNetworkInfo != null && activeNetworkInfo.isConnected
+        }
+
+
+        fun formatDate(strDate:String): String {
+            val sdf = SimpleDateFormat("yyyy-mm-dd")
+            val date = sdf.parse(strDate)
+            val cal = Calendar.getInstance()
+            cal.time = date
+            val formatter =  SimpleDateFormat("MMM dd'"+getDayOfMonthSuffix(cal.get(Calendar.DAY_OF_MONTH))+"', yyyy")
+            return formatter.format(date)
+        }
+        @SuppressLint("RestrictedApi")
+        private fun getDayOfMonthSuffix(n: Int): String {
+            Preconditions.checkArgument(n in 1..31, "illegal day of month: $n")
+            return if (n in 11..13) {
+                "th"
+            } else when (n % 10) {
+                1 -> "st"
+                2 -> "nd"
+                3 -> "rd"
+                else -> "th"
+            }
         }
 
     }

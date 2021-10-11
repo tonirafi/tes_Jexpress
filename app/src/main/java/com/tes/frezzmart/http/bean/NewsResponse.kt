@@ -1,6 +1,7 @@
 package com.tes.frezzmart.http.bean
 
 import com.google.gson.annotations.SerializedName
+import com.tes.frezzmart.utils.AppUtilNew.Companion.formatDate
 
 data class NewsResponse(
 
@@ -48,4 +49,14 @@ data class ArticlesItem(
 
 	@field:SerializedName("content")
 	val content: String? = null
-)
+
+
+
+){
+	fun getDate():String {
+		return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+			formatDate(publishedAt!!)
+		} else ({
+		}).toString()
+	}
+}
