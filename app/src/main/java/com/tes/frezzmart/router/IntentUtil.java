@@ -7,10 +7,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.tes.frezzmart.AppConstants;
 import com.tes.frezzmart.MyApplication;
+import com.tes.frezzmart.http.bean.ArticlesItem;
+import com.tes.frezzmart.utils.AppUtil;
 import com.tes.frezzmart.utils.LogUtil;
 import com.tes.frezzmart.utils.SharedPreferencesTool;
 import com.walkermanx.permission.PermissionActivity;
@@ -65,26 +68,7 @@ public class IntentUtil {
 
     public static Uri toUri(Context context, String url) {
 
-        if (RouterConstants.MAP_URI.INSTANCE.getFAQs().equals(url)) {
-//            launchFAQs(context);
-            return null;
-        }
 
-        if (RouterConstants.MAP_URI.INSTANCE.getGOOGLE_PLAY_MARKET().equals(url)) {
-            jumpToMarket(context, AppConstants.MARKET_URI);
-            return null;
-        }
-
-
-        if (RouterConstants.MAP_URI.INSTANCE.getSIGN_OUT().equals(url)) {
-            Bundle bundle = new Bundle();
-            bundle.putString("Action", "Sign Out-Button");
-            bundle.putString("Category", context.getClass().getSimpleName());
-//            FirebaseAnalytics.getInstance(context).logEvent("Click", bundle);
-
-//            Passport.Companion.getInstance().signOut(true);
-            return null;
-        }
 
         if (TextUtils.isEmpty(url)) {
             return null;
@@ -96,18 +80,6 @@ public class IntentUtil {
             e.printStackTrace();
         }
         if (uri == Uri.EMPTY) {
-            return null;
-        }
-
-        // qsc://app.pedulisehat/go/zendesk_chat
-        if (RouterConstants.MAP_URI.INSTANCE.getCHATROOM().equals(String.format("%s://%s%s", uri.getScheme(), uri.getAuthority(), uri.getPath()))) {
-            List<String> tags = uri.getQueryParameters(RouterConstants.Params.TAGS);
-            if (tags == null || tags.isEmpty()) {
-//                launchChatRoom(context);
-            } else {
-//                launchChatRoom(context, tags.toArray(new String[0]));
-            }
-
             return null;
         }
 
@@ -353,6 +325,16 @@ public class IntentUtil {
             return null;
         }
         return (T) result;
+    }
+
+    public static void intentToWebView(Context context, @NonNull Object articel) {
+
+        Uri.Builder builder = RouterConstants.URI.INSTANCE.getNEWS_DETAIL().buildUpon();
+        if (articel instanceof ArticlesItem) {
+            builder.appendQueryParameter(RouterConstants.Params.PRE_LOAD, AppUtil.getGsonInstance().toJson(articel));
+        }
+
+        intentToUri(context, builder.build(), AppConstants.RequestCode.DEFAULT_RSC_CODE);
     }
 
 }

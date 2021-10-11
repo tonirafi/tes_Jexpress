@@ -3,6 +3,7 @@ package com.tes.frezzmart.router
 import android.app.Activity
 import android.net.Uri
 import cn.campusapp.router.router.IActivityRouteTableInitializer
+import com.tes.frezzmart.ui.detailnews.WebViewActivity
 
 
 class RouterMap : IActivityRouteTableInitializer {
@@ -20,7 +21,7 @@ class RouterMap : IActivityRouteTableInitializer {
 
     override fun initRouterTable(map: MutableMap<String, Class<out Activity>>)
     {
-//        addToMap(map, RouterConstants.MAP_URI.SPLASH, SplashActivity::class.java)
+        addToMap(map, RouterConstants.MAP_URI.NEWS_DETAIL, WebViewActivity::class.java)
 
     }
 

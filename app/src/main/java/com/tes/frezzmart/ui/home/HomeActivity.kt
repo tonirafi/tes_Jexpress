@@ -11,8 +11,12 @@ import com.tes.frezzmart.adapter.BaseCard
 import com.tes.frezzmart.adapter.CardAdapter
 import com.tes.frezzmart.adapter.card.NewsItemCard
 import com.tes.frezzmart.ui.base.BaseActivity
+import com.tes.frezzmart.utils.AppUtil
 import com.tes.frezzmart.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.layout_card_list_common.*
+import kotlinx.android.synthetic.main.layout_common_toolbar.*
+import kotlinx.android.synthetic.main.layout_common_toolbar.toolbar
+import kotlinx.android.synthetic.main.web_view_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -26,7 +30,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_card_list_common)
+        setContentView(R.layout.layout_card_list_common_with_toolbar)
         initViews()
         setViewModel()
         StatusBarUtil.setDarkMode(this)
@@ -35,11 +39,14 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
 
     private fun initViews() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            AppUtil.insertStatusBarHeight2TopPadding(toolbar)
+        }
         cardAdapter.setOnItemClickListener(this)
-//        toolbar.fitsSystemWindows = false
-//        toolbar.title = "Awesome App"
-//        toolbar.setTitleTextColor(resources.getColor(R.color.white))
-//        setSupportActionBar(toolbar)
+        toolbar.fitsSystemWindows = false
+        toolbar.title = "Awesome App"
+        toolbar.setTitleTextColor(resources.getColor(R.color.white))
+        setSupportActionBar(toolbar)
         globalSwapRecyclerView.setAdapter(cardAdapter)
         dashboardViewModel.preloadCards(false)
         search="tes"

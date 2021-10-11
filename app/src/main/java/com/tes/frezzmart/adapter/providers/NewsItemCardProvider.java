@@ -16,6 +16,7 @@ import com.tes.frezzmart.adapter.CommonVh;
 import com.tes.frezzmart.adapter.ItemViewProvider;
 import com.tes.frezzmart.adapter.card.NewsItemCard;
 import com.tes.frezzmart.http.bean.ArticlesItem;
+import com.tes.frezzmart.router.IntentUtil;
 import com.tes.frezzmart.utils.PicassoUtil;
 
 import butterknife.BindView;
@@ -74,6 +75,12 @@ public class NewsItemCardProvider extends ItemViewProvider<NewsItemCard, NewsIte
                 tvDeskrip.setText(Html.fromHtml(articlesItem.getDescription()));
 
 
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        IntentUtil.intentToWebView(itemView.getContext(),articlesItem);
+                    }
+                });
         }
 
 

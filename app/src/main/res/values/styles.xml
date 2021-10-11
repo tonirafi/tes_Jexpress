@@ -109,4 +109,35 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.6</item>
     </style>
+
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:elevation" target:targetApi="lollipop">1dp</item>
+        <item name="android:background">@color/red</item>
+        <item name="titleMarginStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="android:contentInsetStartWithNavigation" target:targetApi="n">0dp</item>
+        <item name="titleTextAppearance">@style/toolBarTextAppearance</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/text_666</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_nav_back</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:theme">@style/ToolbarTheme</item>
+    </style>
+
+    <style name="toolBarTextAppearance">
+        <item name="android:textColor">@color/text_333</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="iconTint">@color/white</item>
+        <!--<item name="android:tint">@color/colorControlNormal</item>-->
+        <!--<item name="android:textColorSecondary">@color/colorControlNormal</item>-->
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
 </resources>
