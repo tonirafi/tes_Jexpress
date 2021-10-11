@@ -24,9 +24,9 @@ import java.util.concurrent.TimeUnit
 
 val appModule = module {
         factory {restAdapter() }
-        single { HomeRepository(get(),get()) }
         single { provideDataBase(androidApplication()) }
         single { provideDao(get()) }
+        single { HomeRepository(get()) }
         viewModel { HomeViewModel(get()) }
     }
 
@@ -99,7 +99,7 @@ val appModule = module {
     }
 
     fun provideDataBase(application: Application): NewsDB {
-        return Room.databaseBuilder(application, NewsDB::class.java, "USERDB")
+        return Room.databaseBuilder(application, NewsDB::class.java, "NewsDB")
             .fallbackToDestructiveMigration()
             .build()
     }

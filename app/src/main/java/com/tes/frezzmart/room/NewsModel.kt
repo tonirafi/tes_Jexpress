@@ -2,12 +2,16 @@ package com.tes.frezzmart.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import com.google.gson.annotations.SerializedName
+import androidx.room.PrimaryKey
 import com.tes.frezzmart.http.bean.Source
+import com.tes.frezzmart.utils.AppUtilNew
 
 
 @Entity(tableName = "newsTable")
 class NewsModel {
+    @PrimaryKey(autoGenerate = true)
+    val id: Int?=0
+
     @ColumnInfo(name = "publishedAt")
     val publishedAt: String? = null
 
@@ -31,4 +35,11 @@ class NewsModel {
 
     @ColumnInfo(name = "content")
     val content: String? = null
+
+        fun getDate():String {
+            return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                AppUtilNew.formatDate(publishedAt!!)
+            } else ({
+            }).toString()
+        }
 }

@@ -53,8 +53,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                     search
                 }
 
-
-
         homeRepository.loadDataNews(pageIndex,dataSearch, cacheControl!!)
             ?.map {
 
