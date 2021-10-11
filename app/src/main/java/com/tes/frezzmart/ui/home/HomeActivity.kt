@@ -20,7 +20,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     private  val dashboardViewModel: HomeViewModel by viewModel()
     private val cardAdapter: CardAdapter = CardAdapter(this)
-    private var vertical: Boolean = false
+    private var search = ""
 
 
 
@@ -42,11 +42,13 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 //        setSupportActionBar(toolbar)
         globalSwapRecyclerView.setAdapter(cardAdapter)
         dashboardViewModel.preloadCards(false)
+        search="tes"
         getDataHome()
         globalSwapRecyclerView.setRefreshEnabled(true)
         globalSwapRecyclerView.setOnRefreshListener(this)
         globalSwapRecyclerView.isLoadMoreEnabled = false
         globalSwapRecyclerView.setOnLoadMoreListener(this)
+
 
     }
 
@@ -106,7 +108,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
     }
 
     override fun onLoadMore() {
-       dashboardViewModel.loadMore(vertical)
+       dashboardViewModel.loadMore(search)
     }
 
     override fun onItemOnclick(position: Int) {
@@ -125,7 +127,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
 
     fun getDataHome(){
-        dashboardViewModel.loadDataHome(true)
+        dashboardViewModel.loadDataHome(true,search)
 
     }
 

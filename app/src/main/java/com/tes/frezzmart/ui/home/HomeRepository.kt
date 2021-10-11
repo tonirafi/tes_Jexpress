@@ -10,8 +10,8 @@ import org.koin.core.KoinComponent
 
 class HomeRepository(private val api: ApiService):KoinComponent {
 
-    fun loadDataNews(pageIndex:Int, cacheControl:String?): Observable<NewsResponse>? {
-      return  api?.listNews("bitcoin", AppConstants.TOKEN, cacheControl)
+    fun loadDataNews(pageIndex:Int,search:String, cacheControl:String?): Observable<NewsResponse>? {
+      return  api?.listNews(search,pageIndex,20, AppConstants.TOKEN, cacheControl)
           .subscribeOn(Schedulers.io())
           .observeOn(AndroidSchedulers.mainThread())
 

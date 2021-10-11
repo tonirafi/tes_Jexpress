@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tes.frezzmart.adapter.BaseCard
+import com.tes.frezzmart.adapter.card.DateItemCard
 import com.tes.frezzmart.adapter.card.NewsItemCard
 import okhttp3.CacheControl
 import java.util.concurrent.TimeUnit
@@ -29,16 +30,53 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
         MutableLiveData<Throwable>()
     }
 
+
+
     @SuppressLint("CheckResult")
-    fun loadMore(vertical:Boolean=true){
-        pageIndex++
-        homeRepository.loadDataNews(pageIndex, null)
+    fun loadDataHome(forceHttp: Boolean = false,search:String){
+        pageIndex=1
+        val cacheControl = if (forceHttp) CacheControl.Builder()
+            .maxAge(10, TimeUnit.SECONDS)
+            .build()
+            .toString() else null
+        homeRepository.loadDataNews(pageIndex,search, cacheControl!!)
             ?.map {
                 var dataArticles= it.articles
                 var baseCards = ArrayList<BaseCard>()
-
+                var date=""
                 for ( articel in dataArticles!!) {
-                        baseCards.add(NewsItemCard(articel))
+                    if(date !=articel?.publishedAt){
+                        date= articel?.publishedAt!!
+                        baseCards.add(DateItemCard(articel))
+                    }
+                    baseCards.add(NewsItemCard(articel))
+
+                 }
+
+            baseCards
+            }
+            ?.subscribe({
+                listBaseCard.postValue(it)
+
+            },{
+                throwable.postValue(it)
+            })
+    }
+
+    @SuppressLint("CheckResult")
+    fun loadMore(search:String){
+        pageIndex++
+        homeRepository.loadDataNews(pageIndex,search, null)
+            ?.map {
+                var dataArticles= it.articles
+                var baseCards = ArrayList<BaseCard>()
+                var date=""
+                for ( articel in dataArticles!!) {
+                    if(date !=articel?.publishedAt){
+                        date= articel?.publishedAt!!
+                        baseCards.add(DateItemCard(articel))
+                    }
+                    baseCards.add(NewsItemCard(articel))
                 }
 
                 baseCards
@@ -58,34 +96,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                 })
 
     }
-
-    @SuppressLint("CheckResult")
-    fun loadDataHome(forceHttp: Boolean = false){
-        pageIndex=1
-        val cacheControl = if (forceHttp) CacheControl.Builder()
-            .maxAge(10, TimeUnit.SECONDS)
-            .build()
-            .toString() else null
-        homeRepository.loadDataNews(pageIndex, cacheControl!!)
-            ?.map {
-                var dataArticles= it.articles
-                var baseCards = ArrayList<BaseCard>()
-
-                for ( articel in dataArticles!!) {
-                    baseCards.add(NewsItemCard(articel))
-
-                 }
-
-            baseCards
-            }
-            ?.subscribe({
-                listBaseCard.postValue(it)
-
-            },{
-                throwable.postValue(it)
-            })
-    }
-
 
 
     fun preloadCards(vertical: Boolean=true) {

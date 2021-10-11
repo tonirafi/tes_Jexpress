@@ -3,6 +3,8 @@ package com.tes.frezzmart.adapter;
 import android.text.TextUtils;
 
 
+import com.tes.frezzmart.adapter.card.DateItemCard;
+
 import java.util.List;
 
 
@@ -17,6 +19,7 @@ public class CardMapInitializer implements ICardMapInitializer {
         addCardProviderPair(cardNameList, providerNameList, "VPListCard", "VPListCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "MoreCard", "MoreCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "NewsItemCard", "NewsItemCardProvider");
+        addCardProviderPair(cardNameList, providerNameList, "DateItemCard", "DateItemCardProvider");
 
     }
 
