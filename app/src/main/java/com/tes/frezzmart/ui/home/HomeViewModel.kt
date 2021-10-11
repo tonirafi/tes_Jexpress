@@ -7,7 +7,6 @@ import com.tes.frezzmart.adapter.BaseCard
 import com.tes.frezzmart.adapter.card.DateItemCard
 import com.tes.frezzmart.adapter.card.EmptyErrorItemCard
 import com.tes.frezzmart.adapter.card.NewsItemCard
-import com.tes.frezzmart.exception.ApiExceptionHelper
 import okhttp3.CacheControl
 import java.util.concurrent.TimeUnit
 
@@ -54,6 +53,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
                     search
                 }
 
+
+
         homeRepository.loadDataNews(pageIndex,dataSearch, cacheControl!!)
             ?.map {
 
@@ -95,6 +96,8 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
         }else{
             search
         }
+
+
 
         homeRepository.loadDataNews(pageIndex,dataSearch, null)
             ?.map {

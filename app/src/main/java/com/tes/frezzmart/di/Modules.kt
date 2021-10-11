@@ -1,14 +1,19 @@
 package com.tes.frezzmart.di
 
+import android.app.Application
+import androidx.room.Room
 import com.google.gson.GsonBuilder
 import com.tes.frezzmart.BuildConfig
 import com.tes.frezzmart.MyApplication.Companion.getContext
 import com.tes.frezzmart.http.api.ApiService
+import com.tes.frezzmart.room.NewsDB
+import com.tes.frezzmart.room.NewsDao
 import com.tes.frezzmart.ui.home.HomeRepository
 import com.tes.frezzmart.ui.home.HomeViewModel
 import com.tes.frezzmart.utils.AppUtilNew.Companion.isNetworkAvailable
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -20,6 +25,8 @@ import java.util.concurrent.TimeUnit
 val appModule = module {
         factory {restAdapter() }
         single { HomeRepository(get()) }
+        single { provideDataBase(androidApplication()) }
+        single { provideDao(get()) }
         viewModel { HomeViewModel(get()) }
     }
 
@@ -88,7 +95,19 @@ val appModule = module {
             return null
         }
 
+
     }
+
+    fun provideDataBase(application: Application): NewsDB {
+        return Room.databaseBuilder(application, NewsDB::class.java, "USERDB")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    fun provideDao(dataBase: NewsDB): NewsDao {
+        return dataBase.newsDao
+    }
+
 
 
 

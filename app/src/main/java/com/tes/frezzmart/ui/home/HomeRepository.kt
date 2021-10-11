@@ -11,7 +11,7 @@ import org.koin.core.KoinComponent
 class HomeRepository(private val api: ApiService):KoinComponent {
 
     fun loadDataNews(pageIndex:Int, search:String, cacheControl:String?): Observable<NewsResponse>? {
-      return  api?.listNews(search,pageIndex,20,"publishedAt" ,AppConstants.TOKEN, cacheControl)
+      return  api?.listNews(search,pageIndex,15,"publishedAt" ,AppConstants.TOKEN, cacheControl)
           .subscribeOn(Schedulers.io())
           .observeOn(AndroidSchedulers.mainThread())
 

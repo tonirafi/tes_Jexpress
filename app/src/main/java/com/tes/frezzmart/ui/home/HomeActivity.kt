@@ -216,6 +216,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
             edSearch.visibility=View.GONE
             val item: MenuItem = myMenu!!.findItem(R.id.search)
             item.isVisible = true
+            edSearch.setText("")
             search=""
             getDataHome()
         } else {
@@ -225,7 +226,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     override fun viewClick(view: View?, position: Int?) {
         if(view!!.id==R.id.btReload){
-            globalSwapRecyclerView.mSwipeToLoadLayout!!.setRefreshing(true)
+            globalSwapRecyclerView.mSwipeToLoadLayout!!.isRefreshing = true
             getDataHome()
         }
     }
