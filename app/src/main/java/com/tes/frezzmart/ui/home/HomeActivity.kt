@@ -2,6 +2,8 @@ package com.tes.frezzmart.ui.home
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,15 +22,14 @@ import com.tes.frezzmart.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.layout_card_list_common.*
 import kotlinx.android.synthetic.main.layout_common_toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 
 class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, CardAdapter.OnItemClickListener {
 
     private  val dashboardViewModel: HomeViewModel by viewModel()
     private val cardAdapter: CardAdapter = CardAdapter(this)
-
     private var search = "kosong"
-
     var myMenu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +59,35 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
         globalSwapRecyclerView.isLoadMoreEnabled = false
         globalSwapRecyclerView.setOnLoadMoreListener(this)
 
+        edSearch.addTextChangedListener(
+            object : TextWatcher {
 
+                private var timer = Timer()
+                private val DELAY: Long = 500 // milliseconds
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+                override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun afterTextChanged(s: Editable) {
+                    timer.cancel()
+                    timer = Timer()
+                    timer.schedule(
+                        object : TimerTask() {
+                            override fun run() {
+                                search=edSearch.text.toString()
+                                getDataHome()
+                            }
+                        },
+                        DELAY
+                    )
+                }
+            }
+        )
     }
 
 
