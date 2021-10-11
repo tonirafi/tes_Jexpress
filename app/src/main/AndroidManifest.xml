@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.template.project"
+    package="com.tes.frezzmart"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:allowBackup="true"
         android:theme="@style/BaseAppTheme"
-        android:name="com.template.project.MyApplication"
+        android:name="com.tes.frezzmart.MyApplication"
         android:fullBackupContent="false"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup,android:fullBackupContent"

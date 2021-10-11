@@ -5,7 +5,7 @@
     android:gravity="center_vertical|start">
 
 
-    <com.template.project.widget.AdjustableImageView
+    <com.tes.frezzmart.widget.AdjustableImageView
         android:id="@+id/viewMore"
         android:layout_width="60dp"
         android:layout_height="wrap_content"

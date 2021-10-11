@@ -30,10 +30,10 @@
 
 #app 自有类
 #Bean
--keep public class com.template.project.http.bean.* {*;}
--keepclasseswithmembers class * extends com.template.project.http.bean.BaseBean{ *; }
+-keep public class com.tes.frezzmart.http.bean.* {*;}
+-keepclasseswithmembers class * extends com.tes.frezzmart.http.bean.BaseBean{ *; }
 
--keep public class com.template.project.android.R$*{
+-keep public class com.tes.frezzmart.android.R$*{
 public static final int *;
 }
 -keep class com.qingsongchou.library.widget.views.*{*;}
@@ -50,10 +50,10 @@ public static final int *;
 -keep class com.cloudinary.** { *; }
 
 #ItemViewProvider
--keep class com.template.project.adapter.** { *; }
+-keep class com.tes.frezzmart.adapter.** { *; }
 
 #passport
--keep class com.template.project.passport.** { *; }
+-keep class com.tes.frezzmart.passport.** { *; }
 
 
 #AndPermission  proguard-rules
@@ -129,9 +129,9 @@ public static final int *;
 -keep,includedescriptorclasses class com.jakewharton.**
 -keep,includedescriptorclasses class com.yalantis.ucrop.**
 -keep,includedescriptorclasses class com.walkermanx.photopicker.**
--keep,includedescriptorclasses class com.template.project.socialparty.SocialParty
--keep,includedescriptorclasses class com.template.project.widget.**
--keep,includedescriptorclasses class com.template.project.view.animation.AnimationListener
+-keep,includedescriptorclasses class com.tes.frezzmart.socialparty.SocialParty
+-keep,includedescriptorclasses class com.tes.frezzmart.widget.**
+-keep,includedescriptorclasses class com.tes.frezzmart.view.animation.AnimationListener
 #-keep,includedescriptorclasses class com.qingsongchou.library.widget.**
 
 -dontnote com.facebook.all.All
