@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tes.frezzmart.adapter.BaseCard
 import com.tes.frezzmart.adapter.card.DateItemCard
+import com.tes.frezzmart.adapter.card.EmptyErrorItemCard
 import com.tes.frezzmart.adapter.card.NewsItemCard
 import okhttp3.CacheControl
 import java.util.concurrent.TimeUnit
@@ -31,6 +32,12 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
 
+    fun cardOffline(){
+        var baseCards = ArrayList<BaseCard>()
+        baseCards.add(EmptyErrorItemCard("Empty Result.",true))
+        listBaseCard.postValue(baseCards)
+    }
+
 
     @SuppressLint("CheckResult")
     fun loadDataHome(forceHttp: Boolean = false,search:String){
@@ -43,15 +50,22 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             ?.map {
                 var dataArticles= it.articles
                 var baseCards = ArrayList<BaseCard>()
-                var date=""
-                for ( articel in dataArticles!!) {
-                    if(date !=articel?.getDate()){
-                        date= articel?.getDate()!!
-                        baseCards.add(DateItemCard(articel))
-                    }
-                    baseCards.add(NewsItemCard(articel))
 
-                 }
+                if(dataArticles!!.isEmpty() || dataArticles==null){
+                    baseCards.add(EmptyErrorItemCard("Empty Result.",false))
+
+                }else{
+                    var date=""
+                    for ( articel in dataArticles!!) {
+                        if(date !=articel?.getDate()){
+                            date= articel?.getDate()!!
+                            baseCards.add(DateItemCard(articel))
+                        }
+                        baseCards.add(NewsItemCard(articel))
+
+                    }
+                }
+
 
             baseCards
             }

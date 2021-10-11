@@ -12,22 +12,28 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener
 import com.aspsine.swipetoloadlayout.OnRefreshListener
+import com.tes.frezzmart.MyApplication
 import com.tes.frezzmart.R
 import com.tes.frezzmart.adapter.BaseCard
 import com.tes.frezzmart.adapter.CardAdapter
+import com.tes.frezzmart.adapter.ItemCardClickListener
 import com.tes.frezzmart.adapter.card.NewsItemCard
 import com.tes.frezzmart.ui.base.BaseActivity
 import com.tes.frezzmart.utils.AppUtil
+import com.tes.frezzmart.utils.AppUtilNew
 import com.tes.frezzmart.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.layout_card_list_common.*
 import kotlinx.android.synthetic.main.layout_common_toolbar.*
+import kotlinx.android.synthetic.main.layout_common_toolbar.toolbar
+import kotlinx.android.synthetic.main.web_view_activity.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
-class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, CardAdapter.OnItemClickListener {
+class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, CardAdapter.OnItemClickListener,
+    ItemCardClickListener {
 
-    private  val dashboardViewModel: HomeViewModel by viewModel()
+    private  val homeViewModel: HomeViewModel by viewModel()
     private val cardAdapter: CardAdapter = CardAdapter(this)
     private var search = "kosong"
     var myMenu: Menu? = null
@@ -52,7 +58,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
         toolbar.setTitleTextColor(resources.getColor(R.color.white))
         setSupportActionBar(toolbar)
         globalSwapRecyclerView.setAdapter(cardAdapter)
-        dashboardViewModel.preloadCards(false)
+        homeViewModel.preloadCards(false)
         getDataHome()
         globalSwapRecyclerView.setRefreshEnabled(true)
         globalSwapRecyclerView.setOnRefreshListener(this)
@@ -93,24 +99,24 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
     private fun setViewModel(){
 
-        dashboardViewModel.listBaseCardPre.observe(this, Observer {
+        homeViewModel.listBaseCardPre.observe(this, Observer {
             hideAnimationOrLoading()
             updateCards(it, true)
             globalSwapRecyclerView.onCompleteRefresh()
         })
-        dashboardViewModel.listBaseCard.observe(this, Observer {
+        homeViewModel.listBaseCard.observe(this, Observer {
             hideAnimationOrLoading()
             updateCards(it, true)
             globalSwapRecyclerView.onCompleteRefresh()
         })
 
-        dashboardViewModel.listBaseCardLoadMore.observe(this, Observer {
+        homeViewModel.listBaseCardLoadMore.observe(this, Observer {
             hideAnimationOrLoading()
             updateCards(it, false)
             globalSwapRecyclerView.onCompleteRefresh()
         })
 
-        dashboardViewModel.throwable.observe(this, Observer {
+        homeViewModel.throwable.observe(this, Observer {
             hideAnimationOrLoading()
             showMessage(it)
             globalSwapRecyclerView.onCompleteRefresh()
@@ -146,7 +152,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
     }
 
     override fun onLoadMore() {
-       dashboardViewModel.loadMore(search)
+       homeViewModel.loadMore(search)
     }
 
     override fun onItemOnclick(position: Int) {
@@ -155,7 +161,13 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
 
 
     fun getDataHome(){
-        dashboardViewModel.loadDataHome(true, search)
+        if (!AppUtilNew.isNetworkAvailable(MyApplication.getContext())) {
+            homeViewModel.cardOffline()
+
+        }else{
+            homeViewModel.loadDataHome(true, search)
+
+        }
 
     }
 
@@ -194,6 +206,13 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
             getDataHome()
         } else {
             onComplete()
+        }
+    }
+
+    override fun viewClick(view: View?, position: Int?) {
+        if(view!!.id==R.id.btReload){
+            globalSwapRecyclerView.mSwipeToLoadLayout!!.setRefreshing(true)
+            getDataHome()
         }
     }
 

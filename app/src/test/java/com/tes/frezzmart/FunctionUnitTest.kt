@@ -13,7 +13,7 @@ import java.util.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class FunctionUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)

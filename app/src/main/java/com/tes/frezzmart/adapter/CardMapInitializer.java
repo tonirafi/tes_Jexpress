@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 
 import com.tes.frezzmart.adapter.card.DateItemCard;
+import com.tes.frezzmart.adapter.card.EmptyErrorItemCard;
 
 import java.util.List;
 
@@ -15,11 +16,11 @@ public class CardMapInitializer implements ICardMapInitializer {
 
     @Override
     public void initRouterTable(List<String> cardNameList, List<String> providerNameList) {
-        addCardProviderPair(cardNameList, providerNameList, "LabelCard", "LabelCardProvider");
-        addCardProviderPair(cardNameList, providerNameList, "VPListCard", "VPListCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "MoreCard", "MoreCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "NewsItemCard", "NewsItemCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "DateItemCard", "DateItemCardProvider");
+        addCardProviderPair(cardNameList, providerNameList, "EmptyErrorItemCard", "EmptyErrorItemCardProvider");
+
 
     }
 
