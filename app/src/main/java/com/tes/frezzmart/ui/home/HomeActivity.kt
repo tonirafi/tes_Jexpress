@@ -73,6 +73,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener, Card
         globalSwapRecyclerView.setOnRefreshListener(this)
         globalSwapRecyclerView.isLoadMoreEnabled = false
         globalSwapRecyclerView.setOnLoadMoreListener(this)
+        globalSwapRecyclerView.mSwipeLoadMoreFooter
 
         edSearch.addTextChangedListener(
             object : TextWatcher {

@@ -4,13 +4,11 @@ import android.app.Application
 import androidx.room.Room
 import com.google.gson.GsonBuilder
 import com.tes.frezzmart.BuildConfig
-import com.tes.frezzmart.MyApplication.Companion.getContext
 import com.tes.frezzmart.http.api.ApiService
 import com.tes.frezzmart.room.NewsDB
 import com.tes.frezzmart.room.NewsDao
 import com.tes.frezzmart.ui.home.HomeRepository
 import com.tes.frezzmart.ui.home.HomeViewModel
-import com.tes.frezzmart.utils.AppUtilNew.Companion.isNetworkAvailable
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -50,13 +48,13 @@ val appModule = module {
 
             var offlineInterceptor = Interceptor { chain ->
                 var request: Request = chain.request()
-                if (!isNetworkAvailable(getContext())) {
-                    val maxStale = 60 * 60 * 24 * 30 // Offline cache available for 30 days
-                    request = request.newBuilder()
-                            .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
-                            .removeHeader("Pragma")
-                            .build()
-                }
+//                if (!isNetworkAvailable(getContext())) {
+//                    val maxStale = 60 * 60 * 24 * 30 // Offline cache available for 30 days
+//                    request = request.newBuilder()
+//                            .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
+//                            .removeHeader("Pragma")
+//                            .build()
+//                }
                 chain.proceed(request)
             }
 
@@ -66,7 +64,7 @@ val appModule = module {
 
             var cacheSize = 10 * 1024 * 1024 // 10 MB
 
-            var cache = Cache(getContext().cacheDir, cacheSize.toLong())
+//            var cache = Cache(getContext().cacheDir, cacheSize.toLong())
 
             val client = OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.MINUTES)
@@ -77,7 +75,7 @@ val appModule = module {
                 .connectTimeout(90.toLong(), TimeUnit.SECONDS)
                 .readTimeout(90.toLong(), TimeUnit.SECONDS)
                 .writeTimeout(90.toLong(), TimeUnit.SECONDS)
-                .cache(cache)
+//                .cache(cache)
                 .build()
 
 
