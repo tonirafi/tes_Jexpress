@@ -22,7 +22,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.tes.frezzmart"
+        applicationId "com.template.android"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 13
@@ -35,7 +35,7 @@ android {
 
     buildTypes {
 
-        debug{
+        debug {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
@@ -81,7 +81,6 @@ android {
     }
 
 
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -113,6 +112,7 @@ dependencies {
     testImplementation "com.google.truth:truth:0.42"
     testImplementation "org.mockito:mockito-core:2.21.0"
     testImplementation "android.arch.core:core-testing:1.1.1"
+    androidTestImplementation 'androidx.test:rules:1.4.1-alpha03'
 
 
     kapt 'com.jakewharton:butterknife-compiler:10.2.0'
@@ -151,12 +151,7 @@ dependencies {
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
 
-
-
-
-
 }
-
 
 
 kapt {

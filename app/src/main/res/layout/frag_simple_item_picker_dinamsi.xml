@@ -12,7 +12,6 @@
     tools:layout_height="match_parent">
 
 
-
     <LinearLayout
         android:id="@+id/rootLayout"
         android:layout_width="match_parent"
@@ -27,8 +26,8 @@
             android:layout_height="60dp"
             android:background="@drawable/backround_rounded"
             android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
@@ -55,30 +54,27 @@
                 app:tint="@color/text_black" />
 
 
-
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="#D8D8D8" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <RadioGroup
                 android:id="@+id/rg_root"
                 android:layout_width="match_parent"
                 android:background="@color/white"
-                android:layout_height="wrap_content">
-            </RadioGroup>
+                android:layout_height="wrap_content"></RadioGroup>
 
         </androidx.core.widget.NestedScrollView>
 
 
-
-
-
     </LinearLayout>
-
 
 
 </LinearLayout>

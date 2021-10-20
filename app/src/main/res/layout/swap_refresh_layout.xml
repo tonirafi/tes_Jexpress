@@ -18,7 +18,7 @@
         android:descendantFocusability="beforeDescendants"
         android:scrollbars="none" />
 
-    <com.tes.frezzmart.widget.swap.GlobalLoadMoreFooterView
+    <com.template.android.widget.swap.GlobalLoadMoreFooterView
         android:id="@+id/swipe_load_more_footer"
         android:layout_width="match_parent"
         android:layout_height="50dp"

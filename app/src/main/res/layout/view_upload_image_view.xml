@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     tools:parentTag="android.widget.RelativeLayout">
 
-    <com.tes.frezzmart.widget.roundedimageview.RoundedImageView
+    <com.template.android.widget.roundedimageview.RoundedImageView
         android:id="@+id/iv_upload_unit_src"
         android:layout_width="75dp"
         android:layout_height="75dp"

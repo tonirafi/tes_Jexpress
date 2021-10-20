@@ -16,9 +16,8 @@
     <solid android:color="@color/white" />
 
 
-<!--    <padding android:left="-100dp"-->
-<!--                android:right="-100dp"/>-->
-    
+    <!--    <padding android:left="-100dp"-->
+    <!--                android:right="-100dp"/>-->
 
 
 </shape>
