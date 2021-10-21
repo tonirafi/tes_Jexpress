@@ -38,7 +38,7 @@ object RouterConstants {
     object Path {
         const val SPLASH = "splash"
         const val MAIN = "main"
-        const val NEWS_DETAIL = "NEWS_detail"
+        const val PEMBAYARAN_DETAIL = "PEMBAYARAN_DETAIL"
         const val LOGIN = "login"
         const val H5_JUMP = "jump"
     }
@@ -49,7 +49,7 @@ object RouterConstants {
         val LOGIN = getUri(Common.GO_URI, Path.LOGIN)
         val MAIN = getUri(Common.GO_URI, Path.MAIN)
 
-        val NEWS_DETAIL = getUri(Common.GO_URI, Path.NEWS_DETAIL)
+        val PEMBAYARAN_DETAIL = getUri(Common.GO_URI, Path.PEMBAYARAN_DETAIL)
         val JUMP = getUri(Common.GO_URI, Path.H5_JUMP)
 
 
@@ -64,7 +64,7 @@ object RouterConstants {
         val LOGIN = Uri.parse(MAP_URI.LOGIN)!!
 
         val MAIN = Uri.parse(MAP_URI.MAIN)!!
-        val NEWS_DETAIL = Uri.parse(MAP_URI.NEWS_DETAIL)!!
+        val PEMBAYARAN_DETAIL = Uri.parse(MAP_URI.PEMBAYARAN_DETAIL)!!
 
 
         val JUMP = Uri.parse(MAP_URI.JUMP)!!

@@ -11,14 +11,13 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import com.aspsine.swipetoloadlayout.OnLoadMoreListener
 import com.aspsine.swipetoloadlayout.OnRefreshListener
 import com.template.android.MyApplication
 import com.template.android.R
 import com.template.android.adapter.BaseCard
 import com.template.android.adapter.CardAdapter
 import com.template.android.adapter.ItemCardClickListener
-import com.template.android.adapter.card.NewsItemCard
+import com.template.android.adapter.card.ProdakItemCard
 import com.template.android.ui.base.BaseActivity
 import com.template.android.utils.AppUtil
 import com.template.android.utils.AppUtilNew
@@ -29,7 +28,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
-class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener,
+class HomeActivity : BaseActivity(), OnRefreshListener,
     CardAdapter.OnItemClickListener,
     ItemCardClickListener {
 
@@ -62,7 +61,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener,
         }
         cardAdapter.setOnItemClickListener(this)
         toolbar.fitsSystemWindows = false
-        toolbar.title = "News App"
+        toolbar.title = "Warung App"
         toolbar.setTitleTextColor(resources.getColor(R.color.white))
         setSupportActionBar(toolbar)
         globalSwapRecyclerView.setAdapter(cardAdapter)
@@ -71,7 +70,6 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener,
         globalSwapRecyclerView.setRefreshEnabled(true)
         globalSwapRecyclerView.setOnRefreshListener(this)
         globalSwapRecyclerView.isLoadMoreEnabled = false
-        globalSwapRecyclerView.setOnLoadMoreListener(this)
         globalSwapRecyclerView.mSwipeLoadMoreFooter
 
         edSearch.addTextChangedListener(
@@ -138,7 +136,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener,
 
 
         if (reloadAll) {
-            val enable = list.lastOrNull()?.let { it is NewsItemCard } ?: false
+            val enable = list.lastOrNull()?.let { it is ProdakItemCard } ?: false
             globalSwapRecyclerView.isLoadMoreEnabled = enable
 
             cardAdapter.list.clear()
@@ -162,9 +160,7 @@ class HomeActivity : BaseActivity(), OnRefreshListener, OnLoadMoreListener,
         getDataHome()
     }
 
-    override fun onLoadMore() {
-        homeViewModel.loadMore(search)
-    }
+
 
     override fun onItemOnclick(position: Int) {
 

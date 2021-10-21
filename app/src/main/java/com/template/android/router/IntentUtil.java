@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.template.android.AppConstants;
 import com.template.android.MyApplication;
 import com.template.android.http.bean.ArticlesItem;
+import com.template.android.http.bean.ProductsItem;
 import com.template.android.utils.AppUtil;
 import com.template.android.utils.LogUtil;
 import com.template.android.utils.SharedPreferencesTool;
@@ -326,9 +327,19 @@ public class IntentUtil {
 
     public static void intentToWebView(Context context, @NonNull Object articel) {
 
-        Uri.Builder builder = RouterConstants.URI.INSTANCE.getNEWS_DETAIL().buildUpon();
+        Uri.Builder builder = RouterConstants.URI.INSTANCE.getPEMBAYARAN_DETAIL().buildUpon();
         if (articel instanceof ArticlesItem) {
             builder.appendQueryParameter(RouterConstants.Params.PRE_LOAD, AppUtil.getGsonInstance().toJson(articel));
+        }
+
+        intentToUri(context, builder.build(), AppConstants.RequestCode.DEFAULT_RSC_CODE);
+    }
+
+    public static void intentToPembayaran(Context context, @NonNull Object produk) {
+
+        Uri.Builder builder = RouterConstants.URI.INSTANCE.getPEMBAYARAN_DETAIL().buildUpon();
+        if (produk instanceof ProductsItem) {
+            builder.appendQueryParameter(RouterConstants.Params.PRE_LOAD, AppUtil.getGsonInstance().toJson(produk));
         }
 
         intentToUri(context, builder.build(), AppConstants.RequestCode.DEFAULT_RSC_CODE);

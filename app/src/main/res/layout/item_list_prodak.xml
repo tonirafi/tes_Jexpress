@@ -28,7 +28,7 @@
 
 
     <TextView
-        android:id="@+id/tvJudul"
+        android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -46,19 +46,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDeskrip"
+        android:id="@+id/tvPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_regular"
-        android:maxLines="3"
-        android:minLines="2"
         android:text="-"
         android:textColor="@color/text_black"
         android:textSize="@dimen/comm_gap_12"
-        app:layout_constraintEnd_toEndOf="@+id/tvJudul"
-        app:layout_constraintStart_toStartOf="@+id/tvJudul"
-        app:layout_constraintTop_toBottomOf="@+id/tvJudul" />
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

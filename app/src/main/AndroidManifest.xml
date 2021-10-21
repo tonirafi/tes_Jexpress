@@ -46,7 +46,7 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.template.android.ui.detailnews.WebViewActivity" />
+        <activity android:name="com.template.android.ui.pembayaran.PembayaranActivity" />
 
 
     </application>

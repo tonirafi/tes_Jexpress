@@ -4,16 +4,14 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.template.android.adapter.BaseCard
-import com.template.android.adapter.card.DateItemCard
 import com.template.android.adapter.card.EmptyErrorItemCard
-import com.template.android.adapter.card.NewsItemCard
+import com.template.android.adapter.card.ProdakItemCard
 import okhttp3.CacheControl
 import java.util.concurrent.TimeUnit
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private var pageIndex = 1
-    private var default = "bisnis"
 
     val listBaseCardPre by lazy {
         MutableLiveData<ArrayList<BaseCard>>()
@@ -47,30 +45,31 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             .maxAge(10, TimeUnit.SECONDS)
             .build()
             .toString() else null
-        var dataSearch = if (search == "") {
-            default
-        } else {
-            search
-        }
 
-        homeRepository.loadDataNews(pageIndex, dataSearch, cacheControl!!)
+
+        homeRepository.getWarung(cacheControl!!)
             ?.map {
 
+                var dataProdak = it.products
 
-                var dataArticles = it.articles
+                    dataProdak!!.filter {
+                            it?.name.toString() in search
+                        }
+
+                    dataProdak!!.filter {
+
+                        it?.category.toString() in search
+                    }
+
                 var baseCards = ArrayList<BaseCard>()
 
-                if (dataArticles!!.isEmpty() || dataArticles == null) {
+                if (dataProdak!!.isEmpty() || dataProdak == null) {
                     baseCards.add(EmptyErrorItemCard("Empty Result.", false))
 
                 } else {
-                    var date = ""
-                    for (articel in dataArticles!!) {
-                        if (date != articel?.getDate()) {
-                            date = articel?.getDate()!!
-                            baseCards.add(DateItemCard(articel))
-                        }
-                        baseCards.add(NewsItemCard(articel))
+                    for (prodak in dataProdak!!) {
+
+                        baseCards.add(ProdakItemCard(prodak))
 
                     }
                 }
@@ -86,54 +85,14 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             })
     }
 
-    @SuppressLint("CheckResult")
-    fun loadMore(search: String) {
-        pageIndex++
-        var dataSearch = if (search == "") {
-            default
-        } else {
-            search
-        }
 
-
-
-        homeRepository.loadDataNews(pageIndex, dataSearch, null)
-            ?.map {
-                var dataArticles = it.articles
-                var baseCards = ArrayList<BaseCard>()
-                var date = ""
-                for (articel in dataArticles!!) {
-                    if (date != articel?.getDate()) {
-                        date = articel?.getDate()!!
-                        baseCards.add(DateItemCard(articel))
-                    }
-                    baseCards.add(NewsItemCard(articel))
-                }
-
-                baseCards
-            }
-            ?.subscribe(
-                { data ->
-                    listBaseCardLoadMore.postValue(data)
-                    if (pageIndex > 1 && data.isEmpty()) {
-                        pageIndex--
-                    }
-                },
-                { error ->
-                    if (pageIndex > 1) {
-                        pageIndex--
-                    }
-                    throwable.postValue(error)
-                })
-
-    }
 
 
     fun preloadCards(vertical: Boolean = true) {
         val baseCards = ArrayList<BaseCard>()
 
         for (i in 0..7) {
-            baseCards.add(NewsItemCard(null).apply {
+            baseCards.add(ProdakItemCard(null).apply {
                 loading = true
             })
         }

@@ -3,7 +3,7 @@ package com.template.android.router
 import android.app.Activity
 import android.net.Uri
 import cn.campusapp.router.router.IActivityRouteTableInitializer
-import com.template.android.ui.detailnews.WebViewActivity
+import com.template.android.ui.pembayaran.PembayaranActivity
 
 
 class RouterMap : IActivityRouteTableInitializer {
@@ -20,7 +20,7 @@ class RouterMap : IActivityRouteTableInitializer {
     }
 
     override fun initRouterTable(map: MutableMap<String, Class<out Activity>>) {
-        addToMap(map, RouterConstants.MAP_URI.NEWS_DETAIL, WebViewActivity::class.java)
+        addToMap(map, RouterConstants.MAP_URI.PEMBAYARAN_DETAIL, PembayaranActivity::class.java)
 
     }
 

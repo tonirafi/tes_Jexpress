@@ -55,7 +55,7 @@ class HomeRepositoryTest : KoinTest {
     fun shouldShowData() {
         val testObserver = TestObserver<NewsResponse>()
 
-        homeRepository!!.loadDataNews(1, "Bisnis", "")?.subscribe(testObserver)
+        homeRepository!!.getWarung(1, "Bisnis", "")?.subscribe(testObserver)
         testObserver.awaitTerminalEvent(2, TimeUnit.SECONDS)
         testObserver.assertValueCount(1)
 
@@ -63,7 +63,7 @@ class HomeRepositoryTest : KoinTest {
 
     @Test
     fun getDataNews() {
-        homeRepository!!.loadDataNews(1, "Bisnis", "")
+        homeRepository!!.getWarung(1, "Bisnis", "")
 
     }
 

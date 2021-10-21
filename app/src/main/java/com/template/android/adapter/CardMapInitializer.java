@@ -2,18 +2,20 @@ package com.template.android.adapter;
 
 import android.text.TextUtils;
 
+import com.template.android.adapter.card.ProdakItemCard;
+
 import java.util.List;
 
 
 public class CardMapInitializer implements ICardMapInitializer {
 
-    private static final String CARD_DIR = "com.tes.frezzmart.adapter.card.";
-    private static final String PROVIDER_DIR = "com.tes.frezzmart.adapter.providers.";
+    private static final String CARD_DIR = "com.template.android.adapter.card.";
+    private static final String PROVIDER_DIR = "com.template.android.adapter.providers.";
 
     @Override
     public void initRouterTable(List<String> cardNameList, List<String> providerNameList) {
         addCardProviderPair(cardNameList, providerNameList, "MoreCard", "MoreCardProvider");
-        addCardProviderPair(cardNameList, providerNameList, "NewsItemCard", "NewsItemCardProvider");
+        addCardProviderPair(cardNameList, providerNameList, "ProdakItemCard", "ProdakItemCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "DateItemCard", "DateItemCardProvider");
         addCardProviderPair(cardNameList, providerNameList, "EmptyErrorItemCard", "EmptyErrorItemCardProvider");
 

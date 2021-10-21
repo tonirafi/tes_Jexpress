@@ -14,34 +14,36 @@ import com.template.android.adapter.CardAdapter;
 import com.template.android.adapter.CardMap;
 import com.template.android.adapter.CommonVh;
 import com.template.android.adapter.ItemViewProvider;
-import com.template.android.adapter.card.NewsItemCard;
-import com.template.android.http.bean.ArticlesItem;
+import com.template.android.adapter.card.ProdakItemCard;
+import com.template.android.http.bean.ProductsItem;
+import com.template.android.http.bean.Warung;
 import com.template.android.router.IntentUtil;
 import com.template.android.utils.PicassoUtil;
+import com.template.android.utils.ToastUtil;
 
 import butterknife.BindView;
 
-@CardMap(NewsItemCard.class)
-public class NewsItemCardProvider extends ItemViewProvider<NewsItemCard, NewsItemCardProvider.ViewHolder> {
+@CardMap(ProdakItemCard.class)
+public class ProdakItemCardProvider extends ItemViewProvider<ProdakItemCard, ProdakItemCardProvider.ViewHolder> {
 
 
-    public NewsItemCardProvider(CardAdapter.OnItemClickListener listener) {
+    public ProdakItemCardProvider(CardAdapter.OnItemClickListener listener) {
         super(listener);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        return new ViewHolder(inflater.inflate(R.layout.item_list_news, parent, false), mOnItemClickListener);
+        return new ViewHolder(inflater.inflate(R.layout.item_list_prodak, parent, false), mOnItemClickListener);
     }
 
 
-    public static class ViewHolder extends CommonVh<NewsItemCard> {
-        @BindView(R.id.tvJudul)
-        TextView tvJudul;
+    public static class ViewHolder extends CommonVh<ProdakItemCard> {
+        @BindView(R.id.tvName)
+        TextView tvName;
 
-        @BindView(R.id.tvDeskrip)
-        TextView tvDeskrip;
+        @BindView(R.id.tvPrice)
+        TextView tvPrice;
 
 
         @BindView(R.id.ic_image)
@@ -58,26 +60,28 @@ public class NewsItemCardProvider extends ItemViewProvider<NewsItemCard, NewsIte
 
 
         @Override
-        public void bind(NewsItemCard card) {
+        public void bind(ProdakItemCard card) {
             super.bind(card);
 
-            ArticlesItem articlesItem = card.articlesItem;
-            if (articlesItem == null) {
+            ProductsItem productsItem = card.productsItem;
+            if (productsItem == null) {
                 if (card.loading) {
                     showPlaceholders();
                 }
                 return;
             }
 
-            PicassoUtil.load(articlesItem.getUrlToImage()).centerCrop().fit().into(ic_image);
-            tvJudul.setText(articlesItem.getTitle());
-            tvDeskrip.setText(Html.fromHtml(articlesItem.getDescription()));
+//            PicassoUtil.load(productsItem.getUrlToImage()).centerCrop().fit().into(ic_image);
+            tvName.setText(productsItem.getName());
+            tvPrice.setText(" "+productsItem.getPrice());
+
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    IntentUtil.intentToWebView(itemView.getContext(), articlesItem);
+
+                    IntentUtil.intentToPembayaran(itemView.getContext(), productsItem);
                 }
             });
         }
